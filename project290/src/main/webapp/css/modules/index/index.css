@@ -1,0 +1,246 @@
+
+/*
+CSS Credit: http://www.cssmoban.com
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.5em;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+
+a:link, a:visited { color: #000000; /* text-decoration: underline; */ font-weight: normal; } 
+a:active, a:hover { color: #0066FF; text-decoration: none; }
+
+p { margin: 0px; padding: 0 0 10px 0; }
+
+img { margin: 0px; padding: 0px; border: none; }
+
+.cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
+
+.margin_bottom_10 { clear: both; width: 100%; height: 10px; font-size: 1px;	}
+.margin_bottom_20 { clear: both; width: 100%; height: 20px; font-size: 1px;	}
+.margin_bottom_30 { clear: both; width: 100%; height: 30px; font-size: 1px;	}
+.margin_bottom_40 { clear: both; width: 100%; height: 40px; font-size: 1px;	}
+.margin_bottom_50 { clear: both; width: 100%; height: 50px; font-size: 1px;	}
+.margin_bottom_60 { clear: both; width: 100%; height: 60px; font-size: 1px;	}
+
+.margin_right_20 { margin-right: 20px; }
+.margin_right_40 { margin-right: 40px; }
+
+.dashed_border_bottom {
+	border-bottom: 1px dashed #cccccc;
+}
+
+.dashed_border_right {
+	border-right: 1px dashed #cccccc;
+}
+
+.button_01 a {
+	clear: both;
+	display: block;
+	width: 195px;
+	height: 22px;
+	padding-top: 4px;
+	padding-left: 10px;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
+}
+.button_01 a:hover {
+	color: #000000;
+}
+
+
+
+
+.fl { float: left; }
+.fr { float: right; }
+
+h1 {
+	margin: 0px;
+	padding: 10px 0;
+	font-size: 34px;
+	color: #ffffff;
+	font-weight: normal;	
+}
+
+h2 {
+	height: 15px;
+	margin: 0 0 20px 0;
+	padding: 18px 0 10px 0;
+	font-size: 24px;
+	color: #757575;
+	font-weight: normal;	
+	letter-spacing: -2px;
+}
+
+h2 span {
+	float: left;
+	padding-left: 3px;
+	padding-right: 10px;
+	display: block;
+	color: #ffffff;
+}
+
+h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;	
+}
+
+h4 {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: 12px;
+	color: #99FF00;
+	font-weight: bold;	
+}
+
+.em_text {
+	color: #00ffff;
+}
+
+.image_wrapper{
+	margin-top: 3px;
+}
+
+.fl_image {
+	float: left;
+	margin-right: 10px 
+}
+
+.fr_image {
+	float: right;
+	margin-left: 10px 
+}
+#main{
+      width:100%;
+      height:100%;
+      background: url(../../../images/modules/index/main_content.jpg);
+        	background-size:cover; 
+  	-webkit-background-size:cover;
+   }
+#header_all {
+	width:100%;
+	position:absolute;
+}
+#header_wrapper{
+   	width:100%;
+   	height:130px;
+    padding: 0 10px;
+	margin: 0 auto;	
+    background: url(../../../images/modules/index/main_head.jpg);
+	background-size:  1920px 130px;
+}
+#header_menu_wrapper
+{
+	height:32px;
+	width:100%;
+	margin: 0 auto;	
+    background: url(../../../images/modules/index/main_menu.jpg);
+	background-size:  1920px 100%;
+	
+}
+
+
+#header_menu {
+	margin-top:0px;
+	margin-bottom:0px;
+    margin-right: 20px;
+	padding-right:10px;
+}
+
+#header_menu ul {
+	overflow: hidden;
+	padding: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: auto;
+    margin-bottom: 0px;
+	list-style: none;
+	float:right;
+}
+
+#logout li a.no-border
+{
+	border: none;
+	text-decoration:underline;
+	color:#e22;
+}
+
+#logout
+{
+   margin: 0px;
+}
+
+#logout li a.no-border:hover
+{
+  color: #99FF00;
+}
+
+
+#menus
+{
+  margin-left:50px;
+}
+
+#header_menu ul li
+{
+    padding: 0px;
+	margin: 0px;
+	display: inline;
+	height: 32px;
+}
+
+
+#header_menu ul li a {
+	float: left;
+	display: block;
+	height: 32px;
+	line-height:32px;
+	width: 120px;
+	padding: 1px 0;
+	font-size: 20px;
+	text-align: center;
+	font-weight: normal;
+	text-decoration: none;
+	color: #ffffff;	
+	outline: none;
+	border-left: 2px solid #ffffff;
+}
+
+#header_menu li a:hover, #header_menu li .current {
+	color: #99FF00;
+}
+
+#header_menu li .first {
+	border: none;
+}
+/* menu */
+
+#content_wrapper {
+	padding-top:162px;
+	font-size:16px;
+	width: 100%;
+	height:100%;
+	margin: 0 auto;	
+  	/* -moz-background-size:cover; */
+ 
+
+}
+#content
+{
+	position:relative;
+    width: 100%;
+	background-repeat: no-repeat;
+    background: url(../../../images/modules/index/main_content.jpg);
+    background-size:cover; 
+  	-webkit-background-size:cover;
+}

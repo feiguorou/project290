@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.whu.p290.dao.UserMapper">
+	
+	<resultMap id="BaseResultMap" type="com.whu.p290.mapper.param.UserParam">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    </resultMap>
+	
+    <select id="getUsers"  parameterType="com.whu.p290.mapper.param.UserParam" resultType="com.whu.p290.mapper.result.TestUserResult">
+    	    select user_name, password, role, realname, sex, age from user_t 
+    	    where 1=1
+    	    <if test= "username != null and username != ''" >
+            and user_name = #{username}
+            </if>
+             <if test= "password != null and password != ''" >
+            and password = #{password}
+            </if>
+    	    <!-- select USERNAME,PASSWORD,EMAIL,LOGINIP,LOGINTIME,PASSWORDTIME,RANDOM,ROLE,SEX,REALNAME,AGE,y.col_str as ROLETEXT,z.col_str as SEXTEXT  from t_User x left join (select col_str,col_value from t_Constant where col_name = 'role') y on x.role = y.col_value
+			left join (select col_str,col_value from t_Constant where col_name = 'sex') z on x.sex = z.col_value
+			where 1=1
+		    <if test= "username != null and username != ''" >
+            and x.USERNAME = #{username}
+            </if>
+		    <if test= "password != null and password != ''" >
+            and x.PASSWORD = #{password}
+            </if> -->
+    </select>
+	
+	<select id="getOtherUsers" parameterType="java.lang.String" resultType="com.whu.p290.mapper.result.SimpleUserResult">
+    	    select USERNAME,PASSWORD,REALNAME,y.col_str as ROLETEXT,z.col_str as SEXTEXT  from t_User x left join (select col_str,col_value from t_Constant where col_name = 'role') y on x.role = y.col_value
+			left join (select col_str,col_value from t_Constant where col_name = 'sex') z on x.sex = z.col_value
+			where 1=1
+		    <if test= "_parameter != null and _parameter != ''" >
+            and x.USERNAME  &lt;&gt; #{_parameter}
+            </if>
+    </select>
+	
+    <insert id="insertUser" parameterType="com.whu.p290.mapper.param.UserParam" useGeneratedKeys="true" keyProperty="id">
+        insert into user_t (user_name,password,sex,role,realname)
+        values (#{username},#{password},#{sex},#{role},#{realname,jdbcType=VARCHAR})
+    </insert>
+    <update id="updateUser" parameterType="com.whu.p290.mapper.param.UserParam">
+         update t_User 
+		 <set>
+		 	<if test="password !=null and password !=''">
+		 		PASSWORD =#{password},
+		 	</if>
+		    <if test="sex !=null">
+		 		SEX = #{sex},
+		 	</if>
+			<if test="role !=null">
+		 		ROLE = #{role},
+		 	</if>
+		    <if test="realname !=null and realname !=''">
+		 		REALNAME =#{realname},
+		 	</if>
+		</set>
+         where  USERNAME = #{username}
+    </update>
+    <delete id="deleteUser" parameterType="java.lang.String">
+        delete t_User where USERNAME=#{_parameter}
+    </delete>
+</mapper>

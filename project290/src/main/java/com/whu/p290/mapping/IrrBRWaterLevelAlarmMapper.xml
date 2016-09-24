@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whu.p290.dao.IrrBRWaterLevelAlarmMapper" >
+  <resultMap id="BaseResultMap" type="com.whu.p290.model.IrrBRWaterLevelAlarm" >
+    <id column="Stadia_Code" property="stadiaCode" jdbcType="CHAR" />
+    <id column="Mea_Time" property="meaTime" jdbcType="TIME" />
+    <result column="Stadia_Name" property="stadiaName" jdbcType="VARCHAR" />
+    <result column="CTT" property="ctt" jdbcType="CHAR" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Stadia_Code, Mea_Time, Stadia_Name, CTT, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarmKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_IrrBRWaterLevelAlarm
+    where Stadia_Code = #{stadiaCode,jdbcType=CHAR}
+      and Mea_Time = #{meaTime,jdbcType=TIME}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarmKey" >
+    delete from t_IrrBRWaterLevelAlarm
+    where Stadia_Code = #{stadiaCode,jdbcType=CHAR}
+      and Mea_Time = #{meaTime,jdbcType=TIME}
+  </delete>
+  <insert id="insert" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarm" >
+    insert into t_IrrBRWaterLevelAlarm (Stadia_Code, Mea_Time, Stadia_Name, 
+      CTT, STATUS)
+    values (#{stadiaCode,jdbcType=CHAR}, #{meaTime,jdbcType=TIME}, #{stadiaName,jdbcType=VARCHAR}, 
+      #{ctt,jdbcType=CHAR}, #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarm" >
+    insert into t_IrrBRWaterLevelAlarm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stadiaCode != null" >
+        Stadia_Code,
+      </if>
+      <if test="meaTime != null" >
+        Mea_Time,
+      </if>
+      <if test="stadiaName != null" >
+        Stadia_Name,
+      </if>
+      <if test="ctt != null" >
+        CTT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stadiaCode != null" >
+        #{stadiaCode,jdbcType=CHAR},
+      </if>
+      <if test="meaTime != null" >
+        #{meaTime,jdbcType=TIME},
+      </if>
+      <if test="stadiaName != null" >
+        #{stadiaName,jdbcType=VARCHAR},
+      </if>
+      <if test="ctt != null" >
+        #{ctt,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarm" >
+    update t_IrrBRWaterLevelAlarm
+    <set >
+      <if test="stadiaName != null" >
+        Stadia_Name = #{stadiaName,jdbcType=VARCHAR},
+      </if>
+      <if test="ctt != null" >
+        CTT = #{ctt,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where Stadia_Code = #{stadiaCode,jdbcType=CHAR}
+      and Mea_Time = #{meaTime,jdbcType=TIME}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whu.p290.model.IrrBRWaterLevelAlarm" >
+    update t_IrrBRWaterLevelAlarm
+    set Stadia_Name = #{stadiaName,jdbcType=VARCHAR},
+      CTT = #{ctt,jdbcType=CHAR},
+      STATUS = #{status,jdbcType=CHAR}
+    where Stadia_Code = #{stadiaCode,jdbcType=CHAR}
+      and Mea_Time = #{meaTime,jdbcType=TIME}
+  </update>
+</mapper>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.whu.p290.dao.RealtimeIrrBRWaterStadiaMapper">
+  <resultMap id="BaseResultMap" type="com.whu.p290.model.RealtimeIrrBRWaterStadia">
+    <id column="stadiaCode" jdbcType="CHAR" property="stadiacode" />
+    <id column="meaTime" jdbcType="TIME" property="meatime" />
+    <result column="heightUp" jdbcType="NUMERIC" property="heightup" />
+    <result column="heightDown" jdbcType="NUMERIC" property="heightdown" />
+    <result column="fluxGate" jdbcType="NUMERIC" property="fluxgate" />
+    <result column="openDegree1" jdbcType="NUMERIC" property="opendegree1" />
+    <result column="openDegree2" jdbcType="NUMERIC" property="opendegree2" />
+    <result column="openDegree3" jdbcType="NUMERIC" property="opendegree3" />
+    <result column="openDegree4" jdbcType="NUMERIC" property="opendegree4" />
+    <result column="openDegree5" jdbcType="NUMERIC" property="opendegree5" />
+    <result column="gateState" jdbcType="CHAR" property="gatestate" />
+  </resultMap>
+    <resultMap id="BaseResultMap2" type="com.whu.p290.dto.RealtimeIrrBRWaterInfo">
+    <id column="stadiaCode" jdbcType="CHAR" property="stadiacode" />
+    <id column="stadia_Name" jdbcType="CHAR" property="stadianame" />
+    <id column="meaTime" jdbcType="TIME" property="meatime" />
+    <result column="heightUp" jdbcType="NUMERIC" property="heightup" />
+    <result column="heightDown" jdbcType="NUMERIC" property="heightdown" />
+    <result column="fluxGate" jdbcType="NUMERIC" property="fluxgate" />
+    <result column="openDegree1" jdbcType="NUMERIC" property="opendegree1" />
+    <result column="openDegree2" jdbcType="NUMERIC" property="opendegree2" />
+    <result column="openDegree3" jdbcType="NUMERIC" property="opendegree3" />
+    <result column="openDegree4" jdbcType="NUMERIC" property="opendegree4" />
+    <result column="openDegree5" jdbcType="NUMERIC" property="opendegree5" />
+    <result column="gateState" jdbcType="CHAR" property="gatestate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    stadiaCode, meaTime, heightUp, heightDown, fluxGate, openDegree1, openDegree2, openDegree3, 
+    openDegree4, openDegree5, gateState
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadiaKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_RealtimeIrrBRWaterStadia
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+      and meaTime = #{meatime,jdbcType=TIME}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadiaKey">
+    delete from t_RealtimeIrrBRWaterStadia
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+      and meaTime = #{meatime,jdbcType=TIME}
+  </delete>
+  <insert id="insert" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadia">
+    insert into t_RealtimeIrrBRWaterStadia (stadiaCode, meaTime, heightUp, 
+      heightDown, fluxGate, openDegree1, 
+      openDegree2, openDegree3, openDegree4, 
+      openDegree5, gateState)
+    values (#{stadiacode,jdbcType=CHAR}, #{meatime,jdbcType=TIME}, #{heightup,jdbcType=NUMERIC}, 
+      #{heightdown,jdbcType=NUMERIC}, #{fluxgate,jdbcType=NUMERIC}, #{opendegree1,jdbcType=NUMERIC}, 
+      #{opendegree2,jdbcType=NUMERIC}, #{opendegree3,jdbcType=NUMERIC}, #{opendegree4,jdbcType=NUMERIC}, 
+      #{opendegree5,jdbcType=NUMERIC}, #{gatestate,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadia">
+    insert into t_RealtimeIrrBRWaterStadia
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stadiacode != null">
+        stadiaCode,
+      </if>
+      <if test="meatime != null">
+        meaTime,
+      </if>
+      <if test="heightup != null">
+        heightUp,
+      </if>
+      <if test="heightdown != null">
+        heightDown,
+      </if>
+      <if test="fluxgate != null">
+        fluxGate,
+      </if>
+      <if test="opendegree1 != null">
+        openDegree1,
+      </if>
+      <if test="opendegree2 != null">
+        openDegree2,
+      </if>
+      <if test="opendegree3 != null">
+        openDegree3,
+      </if>
+      <if test="opendegree4 != null">
+        openDegree4,
+      </if>
+      <if test="opendegree5 != null">
+        openDegree5,
+      </if>
+      <if test="gatestate != null">
+        gateState,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stadiacode != null">
+        #{stadiacode,jdbcType=CHAR},
+      </if>
+      <if test="meatime != null">
+        #{meatime,jdbcType=TIME},
+      </if>
+      <if test="heightup != null">
+        #{heightup,jdbcType=NUMERIC},
+      </if>
+      <if test="heightdown != null">
+        #{heightdown,jdbcType=NUMERIC},
+      </if>
+      <if test="fluxgate != null">
+        #{fluxgate,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree1 != null">
+        #{opendegree1,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree2 != null">
+        #{opendegree2,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree3 != null">
+        #{opendegree3,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree4 != null">
+        #{opendegree4,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree5 != null">
+        #{opendegree5,jdbcType=NUMERIC},
+      </if>
+      <if test="gatestate != null">
+        #{gatestate,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadia">
+    update t_RealtimeIrrBRWaterStadia
+    <set>
+      <if test="heightup != null">
+        heightUp = #{heightup,jdbcType=NUMERIC},
+      </if>
+      <if test="heightdown != null">
+        heightDown = #{heightdown,jdbcType=NUMERIC},
+      </if>
+      <if test="fluxgate != null">
+        fluxGate = #{fluxgate,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree1 != null">
+        openDegree1 = #{opendegree1,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree2 != null">
+        openDegree2 = #{opendegree2,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree3 != null">
+        openDegree3 = #{opendegree3,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree4 != null">
+        openDegree4 = #{opendegree4,jdbcType=NUMERIC},
+      </if>
+      <if test="opendegree5 != null">
+        openDegree5 = #{opendegree5,jdbcType=NUMERIC},
+      </if>
+      <if test="gatestate != null">
+        gateState = #{gatestate,jdbcType=CHAR},
+      </if>
+    </set>
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+      and meaTime = #{meatime,jdbcType=TIME}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whu.p290.model.RealtimeIrrBRWaterStadia">
+    update t_RealtimeIrrBRWaterStadia
+    set heightUp = #{heightup,jdbcType=NUMERIC},
+      heightDown = #{heightdown,jdbcType=NUMERIC},
+      fluxGate = #{fluxgate,jdbcType=NUMERIC},
+      openDegree1 = #{opendegree1,jdbcType=NUMERIC},
+      openDegree2 = #{opendegree2,jdbcType=NUMERIC},
+      openDegree3 = #{opendegree3,jdbcType=NUMERIC},
+      openDegree4 = #{opendegree4,jdbcType=NUMERIC},
+      openDegree5 = #{opendegree5,jdbcType=NUMERIC},
+      gateState = #{gatestate,jdbcType=CHAR}
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+      and meaTime = #{meatime,jdbcType=TIME}
+  </update>
+  <!-- 
+  <select id="getNewestWaterInfo" resultMap="BaseResultMap2">
+  	   SELECT t2.Stadia_Name,t1.*
+       FROM  (SELECT * 
+              FROM t_RealtimeIrrBRWaterStadia 
+              WHERE meaTime = (SELECT MAX(meaTime) 
+                               FROM  test.dbo.t_RealtimeIrrBRWaterStadia 
+                               WHERE stadiaCode = t_RealtimeIrrBRWaterStadia.stadiaCode)
+              AND meaTime < DATEADD(hh, -1, GETDATE()) ) t1
+       LEFT JOIN  test.dbo.t_IrrBRStadia t2
+       ON t1.stadiaCode = t2.stadiaCode
+       ORDER BY stadiaCode  
+  </select>  -->
+  <select id="getNewestWaterInfo" resultMap="BaseResultMap2">
+  	   SELECT t2.Stadia_Name,t1.*
+       FROM  (SELECT * 
+              FROM test.dbo.t_RealtimeIrrBRWaterStadia 
+              WHERE meaTime &lt; GETDATE() AND meaTime &gt; DATEADD(hh, -1, GETDATE())
+              ) t1
+       LEFT JOIN  test.dbo.t_IrrBRStadia t2
+       ON t1.stadiaCode = t2.stadiaCode
+       ORDER BY stadiaCode  
+  </select>
+  <select id="getRTWaterInfoByStadiaCode" parameterType="java.lang.String" resultMap="BaseResultMap2">
+  	SELECT t2.Stadia_Name,t1.*
+	FROM  test.dbo.t_RealtimeIrrBRWaterStadia t1 INNER JOIN  test.dbo.t_IrrBRStadia t2
+	ON t1.meaTime &gt; DATEADD(d,-1,GETDATE()) t1.stadiaCode = t2.stadiaCode AND t1.stadiaCode = #{stadiaCode}
+	ORDER BY meaTime
+  </select>
+</mapper>

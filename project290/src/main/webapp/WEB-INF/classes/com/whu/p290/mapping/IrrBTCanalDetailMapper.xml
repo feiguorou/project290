@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whu.p290.dao.IrrBTCanalDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.whu.p290.model.IrrBTCanalDetail" >
+    <id column="CANAL_CODE" property="canalCode" jdbcType="CHAR" />
+    <result column="CANAL_NM" property="canalNm" jdbcType="VARCHAR" />
+    <result column="CANAL_G" property="canalG" jdbcType="CHAR" />
+    <result column="Material_Type" property="materialType" jdbcType="CHAR" />
+    <result column="Lining_Type" property="liningType" jdbcType="CHAR" />
+    <result column="Frost_Heaving_Type" property="frostHeavingType" jdbcType="CHAR" />
+    <result column="Transect_Type" property="transectType" jdbcType="CHAR" />
+    <result column="Roughness" property="roughness" jdbcType="NUMERIC" />
+    <result column="Gradient" property="gradient" jdbcType="NUMERIC" />
+    <result column="CANAL_DES_Q" property="canalDesQ" jdbcType="NUMERIC" />
+    <result column="CANAL_LEN" property="canalLen" jdbcType="NUMERIC" />
+    <result column="ENG_MAN_CD" property="engManCd" jdbcType="CHAR" />
+    <result column="UPPER_CANAL_CD" property="upperCanalCd" jdbcType="CHAR" />
+    <result column="Time_Sign" property="timeSign" jdbcType="TIME" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CANAL_CODE, CANAL_NM, CANAL_G, Material_Type, Lining_Type, Frost_Heaving_Type, Transect_Type, 
+    Roughness, Gradient, CANAL_DES_Q, CANAL_LEN, ENG_MAN_CD, UPPER_CANAL_CD, Time_Sign, 
+    Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_IrrBTCanalDetail
+    where CANAL_CODE = #{canalCode,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_IrrBTCanalDetail
+    where CANAL_CODE = #{canalCode,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.whu.p290.model.IrrBTCanalDetail" >
+    insert into t_IrrBTCanalDetail (CANAL_CODE, CANAL_NM, CANAL_G, 
+      Material_Type, Lining_Type, Frost_Heaving_Type, 
+      Transect_Type, Roughness, Gradient, 
+      CANAL_DES_Q, CANAL_LEN, ENG_MAN_CD, 
+      UPPER_CANAL_CD, Time_Sign, Remark
+      )
+    values (#{canalCode,jdbcType=CHAR}, #{canalNm,jdbcType=VARCHAR}, #{canalG,jdbcType=CHAR}, 
+      #{materialType,jdbcType=CHAR}, #{liningType,jdbcType=CHAR}, #{frostHeavingType,jdbcType=CHAR}, 
+      #{transectType,jdbcType=CHAR}, #{roughness,jdbcType=NUMERIC}, #{gradient,jdbcType=NUMERIC}, 
+      #{canalDesQ,jdbcType=NUMERIC}, #{canalLen,jdbcType=NUMERIC}, #{engManCd,jdbcType=CHAR}, 
+      #{upperCanalCd,jdbcType=CHAR}, #{timeSign,jdbcType=TIME}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.whu.p290.model.IrrBTCanalDetail" >
+    insert into t_IrrBTCanalDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="canalCode != null" >
+        CANAL_CODE,
+      </if>
+      <if test="canalNm != null" >
+        CANAL_NM,
+      </if>
+      <if test="canalG != null" >
+        CANAL_G,
+      </if>
+      <if test="materialType != null" >
+        Material_Type,
+      </if>
+      <if test="liningType != null" >
+        Lining_Type,
+      </if>
+      <if test="frostHeavingType != null" >
+        Frost_Heaving_Type,
+      </if>
+      <if test="transectType != null" >
+        Transect_Type,
+      </if>
+      <if test="roughness != null" >
+        Roughness,
+      </if>
+      <if test="gradient != null" >
+        Gradient,
+      </if>
+      <if test="canalDesQ != null" >
+        CANAL_DES_Q,
+      </if>
+      <if test="canalLen != null" >
+        CANAL_LEN,
+      </if>
+      <if test="engManCd != null" >
+        ENG_MAN_CD,
+      </if>
+      <if test="upperCanalCd != null" >
+        UPPER_CANAL_CD,
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="canalCode != null" >
+        #{canalCode,jdbcType=CHAR},
+      </if>
+      <if test="canalNm != null" >
+        #{canalNm,jdbcType=VARCHAR},
+      </if>
+      <if test="canalG != null" >
+        #{canalG,jdbcType=CHAR},
+      </if>
+      <if test="materialType != null" >
+        #{materialType,jdbcType=CHAR},
+      </if>
+      <if test="liningType != null" >
+        #{liningType,jdbcType=CHAR},
+      </if>
+      <if test="frostHeavingType != null" >
+        #{frostHeavingType,jdbcType=CHAR},
+      </if>
+      <if test="transectType != null" >
+        #{transectType,jdbcType=CHAR},
+      </if>
+      <if test="roughness != null" >
+        #{roughness,jdbcType=NUMERIC},
+      </if>
+      <if test="gradient != null" >
+        #{gradient,jdbcType=NUMERIC},
+      </if>
+      <if test="canalDesQ != null" >
+        #{canalDesQ,jdbcType=NUMERIC},
+      </if>
+      <if test="canalLen != null" >
+        #{canalLen,jdbcType=NUMERIC},
+      </if>
+      <if test="engManCd != null" >
+        #{engManCd,jdbcType=CHAR},
+      </if>
+      <if test="upperCanalCd != null" >
+        #{upperCanalCd,jdbcType=CHAR},
+      </if>
+      <if test="timeSign != null" >
+        #{timeSign,jdbcType=TIME},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whu.p290.model.IrrBTCanalDetail" >
+    update t_IrrBTCanalDetail
+    <set >
+      <if test="canalNm != null" >
+        CANAL_NM = #{canalNm,jdbcType=VARCHAR},
+      </if>
+      <if test="canalG != null" >
+        CANAL_G = #{canalG,jdbcType=CHAR},
+      </if>
+      <if test="materialType != null" >
+        Material_Type = #{materialType,jdbcType=CHAR},
+      </if>
+      <if test="liningType != null" >
+        Lining_Type = #{liningType,jdbcType=CHAR},
+      </if>
+      <if test="frostHeavingType != null" >
+        Frost_Heaving_Type = #{frostHeavingType,jdbcType=CHAR},
+      </if>
+      <if test="transectType != null" >
+        Transect_Type = #{transectType,jdbcType=CHAR},
+      </if>
+      <if test="roughness != null" >
+        Roughness = #{roughness,jdbcType=NUMERIC},
+      </if>
+      <if test="gradient != null" >
+        Gradient = #{gradient,jdbcType=NUMERIC},
+      </if>
+      <if test="canalDesQ != null" >
+        CANAL_DES_Q = #{canalDesQ,jdbcType=NUMERIC},
+      </if>
+      <if test="canalLen != null" >
+        CANAL_LEN = #{canalLen,jdbcType=NUMERIC},
+      </if>
+      <if test="engManCd != null" >
+        ENG_MAN_CD = #{engManCd,jdbcType=CHAR},
+      </if>
+      <if test="upperCanalCd != null" >
+        UPPER_CANAL_CD = #{upperCanalCd,jdbcType=CHAR},
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign = #{timeSign,jdbcType=TIME},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CANAL_CODE = #{canalCode,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whu.p290.model.IrrBTCanalDetail" >
+    update t_IrrBTCanalDetail
+    set CANAL_NM = #{canalNm,jdbcType=VARCHAR},
+      CANAL_G = #{canalG,jdbcType=CHAR},
+      Material_Type = #{materialType,jdbcType=CHAR},
+      Lining_Type = #{liningType,jdbcType=CHAR},
+      Frost_Heaving_Type = #{frostHeavingType,jdbcType=CHAR},
+      Transect_Type = #{transectType,jdbcType=CHAR},
+      Roughness = #{roughness,jdbcType=NUMERIC},
+      Gradient = #{gradient,jdbcType=NUMERIC},
+      CANAL_DES_Q = #{canalDesQ,jdbcType=NUMERIC},
+      CANAL_LEN = #{canalLen,jdbcType=NUMERIC},
+      ENG_MAN_CD = #{engManCd,jdbcType=CHAR},
+      UPPER_CANAL_CD = #{upperCanalCd,jdbcType=CHAR},
+      Time_Sign = #{timeSign,jdbcType=TIME},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where CANAL_CODE = #{canalCode,jdbcType=CHAR}
+  </update>
+    <select id="getParentCanal" resultMap="BaseResultMap" >
+  	select
+  	<include refid="Base_Column_List" />
+    from t_IrrBTCanalDetail
+    where canal_code = upper_canal_cd
+  </select>
+  <select id="getSonCanal" resultMap="BaseResultMap" parameterType="com.whu.p290.model.IrrBTCanalDetail">
+  	select
+  	<include refid="Base_Column_List" />
+    from t_IrrBTCanalDetail
+    where upper_canal_cd = #{canal_code,jdbcType=CHAR}
+  </select>
+</mapper>

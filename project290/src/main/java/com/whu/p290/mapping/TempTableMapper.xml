@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whu.p290.dao.TempTableMapper" >
+  <resultMap id="BaseResultMap" type="com.whu.p290.model.TempTable" >
+    <id column="PERSON_CODE" property="personCode" jdbcType="VARCHAR" />
+    <id column="MODAL" property="modal" jdbcType="VARCHAR" />
+    <result column="SAVE_DATA" property="saveData" jdbcType="VARCHAR" />
+    <result column="Time_Sign" property="timeSign" jdbcType="TIME" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    PERSON_CODE, MODAL, SAVE_DATA, Time_Sign
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.whu.p290.model.TempTableKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_TempTable
+    where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+      and MODAL = #{modal,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.whu.p290.model.TempTableKey" >
+    delete from t_TempTable
+    where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+      and MODAL = #{modal,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.whu.p290.model.TempTable" >
+    insert into t_TempTable (PERSON_CODE, MODAL, SAVE_DATA, 
+      Time_Sign)
+    values (#{personCode,jdbcType=VARCHAR}, #{modal,jdbcType=VARCHAR}, #{saveData,jdbcType=VARCHAR}, 
+      #{timeSign,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whu.p290.model.TempTable" >
+    insert into t_TempTable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personCode != null" >
+        PERSON_CODE,
+      </if>
+      <if test="modal != null" >
+        MODAL,
+      </if>
+      <if test="saveData != null" >
+        SAVE_DATA,
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personCode != null" >
+        #{personCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modal != null" >
+        #{modal,jdbcType=VARCHAR},
+      </if>
+      <if test="saveData != null" >
+        #{saveData,jdbcType=VARCHAR},
+      </if>
+      <if test="timeSign != null" >
+        #{timeSign,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whu.p290.model.TempTable" >
+    update t_TempTable
+    <set >
+      <if test="saveData != null" >
+        SAVE_DATA = #{saveData,jdbcType=VARCHAR},
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign = #{timeSign,jdbcType=TIME},
+      </if>
+    </set>
+    where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+      and MODAL = #{modal,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whu.p290.model.TempTable" >
+    update t_TempTable
+    set SAVE_DATA = #{saveData,jdbcType=VARCHAR},
+      Time_Sign = #{timeSign,jdbcType=TIME}
+    where PERSON_CODE = #{personCode,jdbcType=VARCHAR}
+      and MODAL = #{modal,jdbcType=VARCHAR}
+  </update>
+</mapper>

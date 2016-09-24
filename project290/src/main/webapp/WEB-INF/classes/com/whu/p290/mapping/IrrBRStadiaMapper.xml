@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.whu.p290.dao.IrrBRStadiaMapper" >
+  <resultMap id="BaseResultMap" type="com.whu.p290.model.IrrBRStadia" >
+    <id column="stadiaCode" property="stadiacode" jdbcType="CHAR" />
+    <result column="Stadia_Name" property="stadiaName" jdbcType="VARCHAR" />
+    <result column="Stadia_Type" property="stadiaType" jdbcType="CHAR" />
+    <result column="LOC_CODE" property="locCode" jdbcType="CHAR" />
+    <result column="WaterDam_D" property="waterdamD" jdbcType="NUMERIC" />
+    <result column="STBK" property="stbk" jdbcType="CHAR" />
+    <result column="FLOW_DIR" property="flowDir" jdbcType="CHAR" />
+    <result column="DAT_TP" property="datTp" jdbcType="CHAR" />
+    <result column="DAT_ELEV" property="datElev" jdbcType="NUMERIC" />
+    <result column="MOD_BAS_VAL" property="modBasVal" jdbcType="NUMERIC" />
+    <result column="MOD_PARA" property="modPara" jdbcType="NUMERIC" />
+    <result column="EST_ST_YM" property="estStYm" jdbcType="CHAR" />
+    <result column="RUN_COND" property="runCond" jdbcType="CHAR" />
+    <result column="ENG_MAN_CD" property="engManCd" jdbcType="CHAR" />
+    <result column="Time_Sign" property="timeSign" jdbcType="TIME" />
+    <result column="Remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    stadiaCode, Stadia_Name, Stadia_Type, LOC_CODE, WaterDam_D, STBK, FLOW_DIR, DAT_TP, 
+    DAT_ELEV, MOD_BAS_VAL, MOD_PARA, EST_ST_YM, RUN_COND, ENG_MAN_CD, Time_Sign, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_IrrBRStadia
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_IrrBRStadia
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.whu.p290.model.IrrBRStadia" >
+    insert into t_IrrBRStadia (stadiaCode, Stadia_Name, Stadia_Type, 
+      LOC_CODE, WaterDam_D, STBK, 
+      FLOW_DIR, DAT_TP, DAT_ELEV, 
+      MOD_BAS_VAL, MOD_PARA, EST_ST_YM, 
+      RUN_COND, ENG_MAN_CD, Time_Sign, 
+      Remark)
+    values (#{stadiacode,jdbcType=CHAR}, #{stadiaName,jdbcType=VARCHAR}, #{stadiaType,jdbcType=CHAR}, 
+      #{locCode,jdbcType=CHAR}, #{waterdamD,jdbcType=NUMERIC}, #{stbk,jdbcType=CHAR}, 
+      #{flowDir,jdbcType=CHAR}, #{datTp,jdbcType=CHAR}, #{datElev,jdbcType=NUMERIC}, 
+      #{modBasVal,jdbcType=NUMERIC}, #{modPara,jdbcType=NUMERIC}, #{estStYm,jdbcType=CHAR}, 
+      #{runCond,jdbcType=CHAR}, #{engManCd,jdbcType=CHAR}, #{timeSign,jdbcType=TIME}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.whu.p290.model.IrrBRStadia" >
+    insert into t_IrrBRStadia
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stadiacode != null" >
+        stadiaCode,
+      </if>
+      <if test="stadiaName != null" >
+        Stadia_Name,
+      </if>
+      <if test="stadiaType != null" >
+        Stadia_Type,
+      </if>
+      <if test="locCode != null" >
+        LOC_CODE,
+      </if>
+      <if test="waterdamD != null" >
+        WaterDam_D,
+      </if>
+      <if test="stbk != null" >
+        STBK,
+      </if>
+      <if test="flowDir != null" >
+        FLOW_DIR,
+      </if>
+      <if test="datTp != null" >
+        DAT_TP,
+      </if>
+      <if test="datElev != null" >
+        DAT_ELEV,
+      </if>
+      <if test="modBasVal != null" >
+        MOD_BAS_VAL,
+      </if>
+      <if test="modPara != null" >
+        MOD_PARA,
+      </if>
+      <if test="estStYm != null" >
+        EST_ST_YM,
+      </if>
+      <if test="runCond != null" >
+        RUN_COND,
+      </if>
+      <if test="engManCd != null" >
+        ENG_MAN_CD,
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stadiacode != null" >
+        #{stadiacode,jdbcType=CHAR},
+      </if>
+      <if test="stadiaName != null" >
+        #{stadiaName,jdbcType=VARCHAR},
+      </if>
+      <if test="stadiaType != null" >
+        #{stadiaType,jdbcType=CHAR},
+      </if>
+      <if test="locCode != null" >
+        #{locCode,jdbcType=CHAR},
+      </if>
+      <if test="waterdamD != null" >
+        #{waterdamD,jdbcType=NUMERIC},
+      </if>
+      <if test="stbk != null" >
+        #{stbk,jdbcType=CHAR},
+      </if>
+      <if test="flowDir != null" >
+        #{flowDir,jdbcType=CHAR},
+      </if>
+      <if test="datTp != null" >
+        #{datTp,jdbcType=CHAR},
+      </if>
+      <if test="datElev != null" >
+        #{datElev,jdbcType=NUMERIC},
+      </if>
+      <if test="modBasVal != null" >
+        #{modBasVal,jdbcType=NUMERIC},
+      </if>
+      <if test="modPara != null" >
+        #{modPara,jdbcType=NUMERIC},
+      </if>
+      <if test="estStYm != null" >
+        #{estStYm,jdbcType=CHAR},
+      </if>
+      <if test="runCond != null" >
+        #{runCond,jdbcType=CHAR},
+      </if>
+      <if test="engManCd != null" >
+        #{engManCd,jdbcType=CHAR},
+      </if>
+      <if test="timeSign != null" >
+        #{timeSign,jdbcType=TIME},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.whu.p290.model.IrrBRStadia" >
+    update t_IrrBRStadia
+    <set >
+      <if test="stadiaName != null" >
+        Stadia_Name = #{stadiaName,jdbcType=VARCHAR},
+      </if>
+      <if test="stadiaType != null" >
+        Stadia_Type = #{stadiaType,jdbcType=CHAR},
+      </if>
+      <if test="locCode != null" >
+        LOC_CODE = #{locCode,jdbcType=CHAR},
+      </if>
+      <if test="waterdamD != null" >
+        WaterDam_D = #{waterdamD,jdbcType=NUMERIC},
+      </if>
+      <if test="stbk != null" >
+        STBK = #{stbk,jdbcType=CHAR},
+      </if>
+      <if test="flowDir != null" >
+        FLOW_DIR = #{flowDir,jdbcType=CHAR},
+      </if>
+      <if test="datTp != null" >
+        DAT_TP = #{datTp,jdbcType=CHAR},
+      </if>
+      <if test="datElev != null" >
+        DAT_ELEV = #{datElev,jdbcType=NUMERIC},
+      </if>
+      <if test="modBasVal != null" >
+        MOD_BAS_VAL = #{modBasVal,jdbcType=NUMERIC},
+      </if>
+      <if test="modPara != null" >
+        MOD_PARA = #{modPara,jdbcType=NUMERIC},
+      </if>
+      <if test="estStYm != null" >
+        EST_ST_YM = #{estStYm,jdbcType=CHAR},
+      </if>
+      <if test="runCond != null" >
+        RUN_COND = #{runCond,jdbcType=CHAR},
+      </if>
+      <if test="engManCd != null" >
+        ENG_MAN_CD = #{engManCd,jdbcType=CHAR},
+      </if>
+      <if test="timeSign != null" >
+        Time_Sign = #{timeSign,jdbcType=TIME},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.whu.p290.model.IrrBRStadia" >
+    update t_IrrBRStadia
+    set Stadia_Name = #{stadiaName,jdbcType=VARCHAR},
+      Stadia_Type = #{stadiaType,jdbcType=CHAR},
+      LOC_CODE = #{locCode,jdbcType=CHAR},
+      WaterDam_D = #{waterdamD,jdbcType=NUMERIC},
+      STBK = #{stbk,jdbcType=CHAR},
+      FLOW_DIR = #{flowDir,jdbcType=CHAR},
+      DAT_TP = #{datTp,jdbcType=CHAR},
+      DAT_ELEV = #{datElev,jdbcType=NUMERIC},
+      MOD_BAS_VAL = #{modBasVal,jdbcType=NUMERIC},
+      MOD_PARA = #{modPara,jdbcType=NUMERIC},
+      EST_ST_YM = #{estStYm,jdbcType=CHAR},
+      RUN_COND = #{runCond,jdbcType=CHAR},
+      ENG_MAN_CD = #{engManCd,jdbcType=CHAR},
+      Time_Sign = #{timeSign,jdbcType=TIME},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where stadiaCode = #{stadiacode,jdbcType=CHAR}
+  </update>
+  <select id="getListByIrrBTCanalDetail" parameterType="com.whu.p290.model.IrrBTCanalDetail" resultMap="BaseResultMap">
+  	select 
+    S.*
+    from t_IrrBRStadia S, t_IrrBTCanalDetail C
+    where S.loc_Code = #{C.canal_code,jdbcType=CHAR}
+  </select>
+  <select id="getByIrrBTCanalDetail" parameterType="com.whu.p290.model.IrrBTCanalDetail" resultMap="BaseResultMap">
+  	select 
+    S.*
+    from t_IrrBRStadia S, t_IrrBTCanalDetail C
+    where S.loc_Code = #{C.canal_code,jdbcType=CHAR}
+  </select>
+</mapper>

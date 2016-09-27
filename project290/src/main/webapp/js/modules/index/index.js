@@ -247,7 +247,7 @@
 	      });
 	      $urlRouterProvider.when('/profile', function(){});
 	      $urlRouterProvider.when('/home', function(){});
-	      $urlRouterProvider.otherwise('/sys/userinfo');
+	      $urlRouterProvider.otherwise('/waterinfo');
 	  });
 	
      myMain.controller('headerController',['$scope','$location',function($scope,$location){

@@ -33,6 +33,9 @@ public class WaterInfoController {
 	@Resource
 	private WaterInfoService waterInfoService;
 	
+	/*
+	 * 初始化树
+	 */
 	@RequestMapping(value ="TreeInit" , method= {RequestMethod.GET,RequestMethod.POST })
 	@ResponseBody
 	public String TreeInit()
@@ -102,6 +105,9 @@ public class WaterInfoController {
 		return "success";
 	}
 
+	/*
+	 * 获取所有水库实时信息
+	 */
 	@ResponseBody
 	@RequestMapping(value ="getNewestWaterInfo" , method= {RequestMethod.GET,RequestMethod.POST })
 	public Object getNewestWaterInfo()
@@ -109,13 +115,14 @@ public class WaterInfoController {
 		ArrayList<RealtimeIrrBRWaterInfo> list= waterInfoService.getNewestWaterInfo();
 		//System.out.println("测站个数 ： " + list.size());
 		Iterator<RealtimeIrrBRWaterInfo> iterator = list.iterator();
+		//格式化时间
 		while(iterator.hasNext())
 		{
 			RealtimeIrrBRWaterInfo brWaterInfo = iterator.next();
-			System.out.println("测站名称 ： " + brWaterInfo.getStadianame());
-			System.out.println("测站编码 ： " + brWaterInfo.getStadiacode());
-			System.out.println("检测时间 ： " + brWaterInfo.getMeatime());
-			System.out.println("时间格式 ： " + brWaterInfo.getMeatime().getClass());
+//			System.out.println("测站名称 ： " + brWaterInfo.getStadianame());
+//			System.out.println("测站编码 ： " + brWaterInfo.getStadiacode());
+//			System.out.println("检测时间 ： " + brWaterInfo.getMeatime());
+//			System.out.println("时间格式 ： " + brWaterInfo.getMeatime().getClass());
 //			SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //			String s = form.format(brWaterInfo.getMeatime().toString());
 //			brWaterInfo.setMeatime(s);
@@ -123,32 +130,53 @@ public class WaterInfoController {
 		}
 		return list;
 	}
+	/*
+	 * 获取单个水库当天的所有信息
+	 */
 	@ResponseBody
 	@RequestMapping(value ="getWaterInfoByStadiaCode" , method = {RequestMethod.GET,RequestMethod.POST})
 	public Object getWaterInfoByStadiaCode(String StadiaCode)
 	{
-		System.out.println("后台接受到的数据是 ： " + StadiaCode);
+//		System.out.println("后台接受到的数据是 ： " + StadiaCode);
 		ArrayList<RealtimeIrrBRWaterInfo> list= waterInfoService.getRTWaterInfoByStadiaCode(StadiaCode);
 		Iterator<RealtimeIrrBRWaterInfo> iterator = list.iterator();
+		//格式化时间
 		while(iterator.hasNext())
 		{
 			RealtimeIrrBRWaterInfo brWaterInfo = iterator.next();
 			brWaterInfo.setMeatime(brWaterInfo.getMeatime().substring(0, 19));
-			System.out.println("所选择的测站名 ： " + brWaterInfo.getStadianame());
-			System.out.println("所选择的测站编码 ： " + brWaterInfo.getStadiacode());
+//			System.out.println("所选择的测站名 ： " + brWaterInfo.getStadianame());
+//			System.out.println("所选择的测站编码 ： " + brWaterInfo.getStadiacode());
 		}
 		return list;
 	}
+	/*
+	 *获取单个水库自定义历史信息
+	 */
 	@ResponseBody
 	@RequestMapping(value ="getHistoryWaterInfo" , method = {RequestMethod.GET,RequestMethod.POST})
 	public Object getWaterInfoByTime(String StadiaCode, String beginTime, String endTime)
 	{
+		System.out.println("控制层******************");
 		System.out.println("查看历史信息******前台传来的code：" + StadiaCode);
+		beginTime = beginTime + " 00:00:00.000";
+		endTime = endTime + " 23:59:59.000";
+		System.out.println("查看历史记录");
+		System.out.println("起始时间 ： " + beginTime);
+		System.out.println("结束时间： " + endTime);
 		HistoryQueryParam param = new HistoryQueryParam();
 		param.setBeginTime(beginTime);
 		param.setEndTime(endTime);
 		param.setStadiaCode(StadiaCode);
 		ArrayList<HistoryIrrBRWaterInfo> list = waterInfoService.getHistoryWaterInfo(param);
+		Iterator<HistoryIrrBRWaterInfo> iterator = list.iterator();
+		while(iterator.hasNext())
+		{
+			HistoryIrrBRWaterInfo brWaterInfo = iterator.next();
+			brWaterInfo.setMeatime(brWaterInfo.getMeatime().substring(0,19));
+//			System.out.println("闸下水位 ： " + brWaterInfo.getHeightdown());
+//			System.out.println("***");
+		}
 		return list;
 	}
 }

@@ -17,7 +17,7 @@ jQuery(document).ready(function(){
    });
 	//初始化树，并监听节点
 	treeInit();
-	//获取所有站点信息
+	//获取所有站点实时信息
 	fetchAllStadiaInfos();
 	//监听查询按钮
 	queryStadiaInfoByTime();
@@ -28,7 +28,7 @@ function treeInit(){
 	canalTreeData = [{"text":"渠首总干渠","codeOfStadia":"10510001"},
 	                 {"text":"节制闸1","codeOfStadia":"10510008"},
 	                 {"text":"节制闸2","codeOfStadia":"10510009"},
-	                 {"text":"一分干","codeOfStadia":"","nodes":[{"text":"一分干渠首","codeOfStadia":10510010},{"text":"1-1 支渠","codeOfStadia":"10510013"},{"text":"1-2 支渠","codeOfStadia":"10510014"},{"text":"1-3 支渠","codeOfStadia":"10510015"},{"text":"1-4 支渠","codeOfStadia":"10510016"},{"text":"1-5 支渠","codeOfStadia":"10510017"},{"text":"1-6 支渠","codeOfStadia":"10510018"},{"text":"1-7 支渠","codeOfStadia":"10510019"},{"text":"1-8 支渠","codeOfStadia":"10510020"},{"text":"1-8 (加)支渠","codeOfStadia":"10510021"},{"text":"1-9 支渠","codeOfStadia":"10510022"},{"text":"1-10 支渠","codeOfStadia":"10510023"},{"text":"1-11 支渠","codeOfStadia":"10510024"},{"text":"1-12 支渠","codeOfStadia":"10510025"},{"text":"1-13 支渠","codeOfStadia":"10510026"},{"text":"1-14 支渠","codeOfStadia":"10510027"},{"text":"1-15 支渠","codeOfStadia":"10510028"}]},
+	                 {"text":"一分干","codeOfStadia":"","nodes":[{"text":"一分干渠首","codeOfStadia":"10510010"},{"text":"1-1 支渠","codeOfStadia":"10510013"},{"text":"1-2 支渠","codeOfStadia":"10510014"},{"text":"1-3 支渠","codeOfStadia":"10510015"},{"text":"1-4 支渠","codeOfStadia":"10510016"},{"text":"1-5 支渠","codeOfStadia":"10510017"},{"text":"1-6 支渠","codeOfStadia":"10510018"},{"text":"1-7 支渠","codeOfStadia":"10510019"},{"text":"1-8 支渠","codeOfStadia":"10510020"},{"text":"1-8 (加)支渠","codeOfStadia":"10510021"},{"text":"1-9 支渠","codeOfStadia":"10510022"},{"text":"1-10 支渠","codeOfStadia":"10510023"},{"text":"1-11 支渠","codeOfStadia":"10510024"},{"text":"1-12 支渠","codeOfStadia":"10510025"},{"text":"1-13 支渠","codeOfStadia":"10510026"},{"text":"1-14 支渠","codeOfStadia":"10510027"},{"text":"1-15 支渠","codeOfStadia":"10510028"}]},
 	                 {"text":"二分干","codeOfStadia":"","nodes":[{"text":"二分干渠首","codeOfStadia":"10510011"},{"text":"二干节制闸l","codeOfStadia":"10510029"},{"text":"2-10 支渠","codeOfStadia":"10510030"},{"text":"2-13 支渠","codeOfStadia":"10510031"},{"text":"2-15 支渠","codeOfStadia":"10510032"}]},
 	                 {"text":"三分干","codeOfStadia":"","nodes":[{"text":"三分干渠首","codeOfStadia":"10510012"},{"text":"3-3 支渠","codeOfStadia":"10510033"},{"text":"3-8 支渠","codeOfStadia":"10510034"}]},
 	                 {"text":"一支渠","codeOfStadia":"10510002"},
@@ -38,20 +38,34 @@ function treeInit(){
 	console.log("Json：" + JSON.stringify(canalTreeData));
 	jq('#StadiaName').treeview({
 			data: canalTreeData,
+			animated: '5',
+			//persist:'location',//页面刷新不保留折叠状态
 			showTags: true,
 			levels: 1,
 			//state: closed,  
-			//backColor: 'transparent',
+			backColor: 'transparent',
 			//backColor: /project290/images/modules/index/main_left.jpg,
 			onNodeSelected: function(event, data) {
 //			console.log(data["text"]);
 //			console.log(data["codeOfStadia"]);
-			console.log(data.codeOfStadia);
-	    	showQuery();
-	    	deliverStadiaCode(data.codeOfStadia);
+//			console.log(data.codeOfStadia);
+			if(data.codeOfStadia == '' || data.codeOfStadia == null)
+			{
+//				jq('#damNoData').show();
+//				jq('#damData').hide();
+//				jq('#NoDataInfo').html("请继续选择……");
+			}
+			else
+			{
+				showQuery();
+		    	deliverStadiaCode(data.codeOfStadia);
+			}
 		}
-		
 		});
+	jq('#treeTest').treeview({
+			data:[{"text":"1","codeOfStadia":"2","nodes":[{"text":"测试"}]},{"text":"1","codeOfStadia":"2"},{"text":"3","codeOfStadia":"3"}],
+			showTags: true
+	});
 }
 //获取所有站点的实时信息
 function fetchAllStadiaInfos(){
@@ -62,6 +76,10 @@ function fetchAllStadiaInfos(){
 		dataType:'json',
 		success:function (data) {
 			//alert("加载成功！！");
+			if(data == null || data == "")
+			{
+				//alert("没有最近一个小时的数据！！");
+			}
 			console.log("获取的测站信息data ： " + data);
 			console.log(data["0"]);
 			jq('#allStadiasInfoTable').bootstrapTable('load',data);
@@ -78,6 +96,8 @@ function queryStadiaInfoByTime(){
 		// alert("hello1");
 		beginTime=jq("#inputBeginTime").val();
 		endTime=jq("#inputEndTime").val();
+//		console.log("起始时间 ：" + beginTime);
+//		console.log("结束时间：" + endTime);
 		var distanceTime=Date.parse(beginTime)-Date.parse(endTime);
 		var todayData=new Date();
 		var todayFormat;
@@ -85,7 +105,7 @@ function queryStadiaInfoByTime(){
 			todayFormat=todayData.getFullYear()+"-0"+(todayData.getMonth()+1)+"-"+todayData.getDate();
 		else
 			todayFormat=todayData.getFullYear()+"-"+(todayData.getMonth()+1)+"-"+todayData.getDate();
-		console.log("今天 ： " + todayFormat);
+//		console.log("今天 ： " + todayFormat);
 		var distanceBeginToToday = Date.parse(beginTime) - Date.parse(todayFormat);
 		var distanceEndToToday= Date.parse(endTime) - Date.parse(todayFormat);
 		if(distanceBeginToToday > 0 || distanceEndToToday > 0){
@@ -161,17 +181,11 @@ function showRealtimeTable(codeOfStadia){
 				}else{
 					 jq('#damNoData').hide();
 					 jq('#damData').show();
-				 //alert("000000"+data[0].gateOpenCount);
-				 //console.log("开闸数：" + data["0"].gateOpenCount);
-				 console.log("测站名称 ： " + data["0"].stadianame);
-				 //showDamNumber(data["0"].gateOpenCount);
+
 				 showDamNumber(3);
-				 var nameString=data["0"].stadiaName;
-				//document.getElementById("stadiaNameShow").innerHTML=nameString;
-				//jq('#stadiaNameShow').html(nameString);
-				//jq('#stadiaNameShow1').html=nameString;
-				jq('#stadiaNameShow1').html(nameString);
-				//document.getElementById("stadiaNameShow1").innerHTML=nameString;
+				 var nameString=data["0"].stadianame;
+				jq('#stadiaNameShow').html(nameString);
+				jq('#date').html(" 今日 ");
 				if(data["0"].waterLevelDesign==null)
 					waterDesign=0;
 				else
@@ -189,38 +203,22 @@ function showRealtimeTable(codeOfStadia){
 				
 				jq.each(data,function(index,content){
 					//alert("hello");
-					var timestamp = Date.parse(content.meaTime);
-					
-					console.log("**********");
-					console.log(content.meaTime);
-					console.log(content.heightUp);
-					console.log(content.heightDown);
-					console.log(content.fluxGate);
-					
-					heightUpData.push([timestamp,content.heightUp]);
-					heightDownData.push([timestamp,content.heightDown]);
-					fluxGateData.push([timestamp,content.fluxGate]);					
-					/*heightUpData.push(content.heightUp);
-					heightDownData.push(content.heightDown);
-					fluxGateData.push(content.fluxGate);*/
-					/*heightUpData.push([content.meaTime,content.heightUp]);
-					heightDownData.push([content.meaTime,content.heightDown]);
-					fluxGateData.push([content.meaTime,content.fluxGate]);*/
+					var formatTime=Date.parse(content.meatime);							
+					heightUpData.push([formatTime,content.heightup]);
+					heightDownData.push([formatTime,content.heightdown]);
+					fluxGateData.push([formatTime,content.fluxgate]);				
+
 				});
-				//alert("heightUpData:"+heightUpData);
 				showLineChart(heightUpData,heightDownData,fluxGateData,0,waterDesign);
-				//alert("waterDesign:"+waterDesign);
-				showWaterBarCharts(heightUpData,heightDownData,fluxGateData,0);
-				/*showLineChart(timeData,heightUpData,heightDownData,fluxGateData);
-				showWaterBarCharts(timeData,heightUpData,heightDownData,fluxGateData);*/
-		
 		}
+//		error:function(){
+//			 jq('#NoDataInfo').html("当前所选时间段没有数据，请重新选择时间……");
+//		}
 	});	
 
 }	
 function showHistoryTable(codeOfStadia){
 	// alert("codeOfStadia:"+codeOfStadia);
-
 	var waterDesign;
 		jq.ajax({
 			url:'/project290/WaterInfoController/getHistoryWaterInfo?StadiaCode=' + codeOfStadia + '&beginTime=' + beginTime + '&endTime=' + endTime,//codeOfStadia + beginTime + endTime,
@@ -238,11 +236,16 @@ function showHistoryTable(codeOfStadia){
 					}else{
 						 jq('#damNoData').hide();
 						 jq('#damData').show();
+						 jq('#NoDataInfo').html("当前所选时间段没有数据，请重新选择时间……");
 						if(data[0].waterLevelDesign==null)
 							waterDesign=0;
 						else
 							waterDesign=data[0].waterLevelDesign;
-										 
+						
+						var nameString=data["0"].stadianame;
+						jq('#stadiaNameShow').html(nameString);
+						jq('#date').html(" 历史 ");
+						
 						var timeData=[];
 						var heightUpData = [];
 						var heightDownData=[];
@@ -251,19 +254,23 @@ function showHistoryTable(codeOfStadia){
 						jq.each(data,function(index,content){
 							//alert("hello");
 							//timeData.push(content.meaTime);
-							var formatTime=Date.parse(content.meaTime);							
-							heightUpData.push([formatTime,content.heightUp]);
-							heightDownData.push([formatTime,content.heightDown]);
-							fluxGateData.push([formatTime,content.fluxGate]);
+							//console.log("循环 ：heightDown = " + content.heightdown);
+							var formatTime=Date.parse(content.meatime);							
+							heightUpData.push([formatTime,content.heightup]);
+							heightDownData.push([formatTime,content.heightdown]);
+							fluxGateData.push([formatTime,content.fluxgate]);
 						});
 									 
-				 }	
+				 }	 
 
 					//alert("heightUpData:"+heightUpData);
 					showLineChart(heightUpData,heightDownData,fluxGateData,1,waterDesign);
-					showWaterBarCharts(heightUpData,heightDownData,fluxGateData,1);
+					//showWaterBarCharts(heightUpData,heightDownData,fluxGateData,1);
 				
 			}
+//			error:function(){
+//				 jq('#NoDataInfo').html("当前所选时间段没有数据，请重新选择时间……");
+//			}
 			
 		});
 
@@ -271,6 +278,8 @@ function showHistoryTable(codeOfStadia){
 	
 }
 function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*timeData,*/{
+	console.log("闸上水位 ： " + heightUp);
+	console.log("闸下水位 ： " + heightDown);
 	jq("#damsRealWaterInfoChart").highcharts(
 			{
 				chart:
@@ -289,7 +298,8 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 				{
 					text: '闸站水位流量折线图'
 				},
-				tooltip: {
+				tooltip: 
+				{
 					xDateFormat: '%Y-%m-%d %H:%M:%S',
 					 shared: true
 				},
@@ -302,42 +312,25 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		           showFirstLabel: true,
 		            startOnTick: true,
 		           endOnTick: true,
-//		           minTickInterval: 24 * 3600 * 1000,//最小间隔值
-//		         //   tickInterval:  1,//间隔值
-//		           // tickInterval: 12 * 3600 * 1000,//间隔值
-//		            
-//		         labels: {    
-//		                formatter: function () { 
-//		                	
-//		                	return Highcharts.dateFormat('%Y-%m-%d', this.value); 
-//		                },
-//			             rotation:-30,//倾斜30度，防止数量过多显示不全  
-//		            }, 
-//		         
-		          //categories:timeData 
 				},
-				yAxis: [{ // Primary yAxis
-					plotLines: [{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
+				yAxis: 
+				[{ // Primary yAxis
+				   plotLines: 
+				   [{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
 	                    color: '#000',
 	                    dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
 	                    width: 1.5,
 	                    value: waterLeverDesign,  //y轴显示位置
 	                    zIndex: 5,
-	                    label: {                   	
+	                    label: 
+	                    {                   	
 	                        text: waterLeverDesign +'m',
 	                        align: 'right',
-	                        x: -10,
-	                       
-	                    }
-	/*                    events:{                      
-	                        mouseover:function(){
-	                            //当标示线被鼠标悬停时，触发的事件                        	
-	        	                    return this.value +'cm';        	              
-	                        },
-	                    }*/
-	                    
-	                }],
-		            labels: {
+	                        x: -10, 
+	                     }
+	               }],
+		           labels: 
+		           {
 		                formatter: function() {
 		                    return this.value +'m';
 		                },
@@ -345,7 +338,8 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		                    color: '#4572A7'
 		                }
 		            },
-		           title: {
+		           title: 
+		           {
 		                text: '闸站水位',
 		                style: {
 		                    color: '#4572A7'
@@ -353,25 +347,8 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		            },
 		            opposite:false
 
-		        }, /*{ // Secondary yAxis
-		            gridLineWidth: 0,
-		            title: {
-		                text: '闸下水位',
-		                style: {
-		                    color: '#4572A7'
-		                }
-		            },
-		            labels: {
-		                formatter: function() {
-		                    return this.value +'cm';
-		                },
-		                style: {
-		                    color: '#4572A7'
-		                }
-		            }
-		        	
-
-		        },*/ { // Secondary yAxis
+		         }, 
+		         { // Secondary yAxis
 		            gridLineWidth: 0,
 		            title: {
 		                text: '流量',
@@ -388,10 +365,13 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		                }
 		            },
 		            opposite: true
-		        }],
-		        plotOptions: {
-		            series: {
-		            	 marker: {
+		         }],
+		        plotOptions: 
+		        {
+		            series: 
+		            {
+		            	 marker: 
+		            	 {
 		                     enabled: true
 		            	 },
 		            },
@@ -423,10 +403,7 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		            color: '#AA4643',
 		            type: 'line',
 		            yAxis: 1,
-		            data: fluxGate,
-		           /* marker: {
-		                enabled: false
-		            },*/  
+		            data: fluxGate, 
 		            dashStyle: 'shortdot',//  shortdot longdashdot
 		          tooltip: {
 		                valueSuffix: ' m³/s'
@@ -434,7 +411,8 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		            selected: true
 		             }]
 				
-			},function(chartObj)
+			},
+			function(chartObj)
 			{
 				chart = chartObj;
 			});

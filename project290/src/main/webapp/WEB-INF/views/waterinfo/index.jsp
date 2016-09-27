@@ -49,24 +49,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="/project290/js/modules/waterinfo/waterinfo.js"></script> 
 
 <body>
-<div id="waterinfo" ng-controller="waterinfoController" style="height:1000px">
-	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-width:1300px;">
+<!-- <div id="waterinfo" ng-controller="waterinfoController" style="">  -->
+	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-width:1600px;">
     	<!-- Left side column. contains the logo and sidebar -->
-        <aside class="left-side sidebar-offcanvas" style="width:250px;background:url(/project290/images/modules/index/main_left.jpg)" ><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
+        <aside class="left-side sidebar-offcanvas"  style="background-color:pink;"><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
         <!-- sidebar: style can be found in sidebar.less --> 
-        	<SECTION class="sidebar" style="background : transparent;"><%-- style="background:url(../img/left_03.jpg)" --%>
+        	<SECTION class="sidebar" style=""><%-- style="background:url(../img/left_03.jpg)" --%>
             	<!-- Sidebar user panel -->
            	    <div class="nav-tabs-custom"  style="background : transparent;"><%--style="background:url(../img/left_03.jpg)" --%><!-- Tabs within a box -->
 			  		<!-- <ul class="nav nav-tabs pull-center">
                            <li class="active"><a href="#sales-chart" data-toggle="tab" onclick="showAllJSInfo()" style="font-size:30px; ">渠首总干渠</a></li>
                           </ul>
                     -->
-	                <div class="tab-content no-padding" style="background : transparent;"><!-- style="background:rgb(99, 178, 234)" -->
+	                <div class="tab-content no-padding" style="background-color:'blue';"><!-- style="background:rgb(99, 178, 234)" -->
 	                	<!-- Morris chart - Sales -->
 	                	<div class="chart tab-pane active" id="sales-chart" style="position: relative; background : transparent;"><!-- height:1000px; background-color:pink; -->
 	                    	<!-- sidebar menu: : style can be found in sidebar.less -->
-	                   		<div id="StadiaName" style="background:url(/project290/images/modules/index/main_left.jpg)">
+	                   		<div id="StadiaName" style="background-color:blue;"><!--  style="background:url(/project290/images/modules/index/main_left.jpg)" -->
 							</div>           
+							<div id="treeTest"></div>
 	                 	</div>
 	                </div>
                 </div><!-- /.nav-tabs-custom -->
@@ -113,15 +114,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>				                          
                   			</div>
                   			<!--测站实时查询 -->
-                   			<div class="chart tab-pane " id="stadiaInfoQuery" style="position: relative; padding-bottom:50px; border:1px solid black">
+                   			<div class="chart tab-pane " id="stadiaInfoQuery" style="position: relative; padding-bottom:50px; ">
                    				<div id="stadiaQuery">
 					                <!-- Main content -->  
 					                <div class="content"  id="showQueryInfo" >     <!--   style="display:none" -->                
 					            
 					                    <div class="row">
 					
-										<div class="col-xs-12 connectedSortable">
-											<table style="border:1px solid red; ">
+										<div class="col-xs-12 connectedSortable" >
+											<table >
 												<tr>
 													<td style="padding-left:20px">查询时间：</td>
 													<td style="padding-top:15px">
@@ -187,15 +188,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<!-- /.col -->
 									</div><!-- /.row 时间输入框-->
 							 <div id="damData" ><!-- 表格模块  class="row" -->
-							 	<!-- 
 								<h3 align='center' style="margin:0px 0px -30px 0px">
-									<font><span id="stadiaNameShow1"></span> 闸站水位流量</font>
-								</h3>  -->
-								<div style="padding-bottom:10px;margin-bottom:10px;border:2px solid black;" ><!-- 表格大小问题还未解决 -->
-								<div class="" style="border:1px solid blue;padding-bottom:10px;margin:10px;"> <!-- class="table-responsive" style="height:600px;" -->
+									<font><span id="stadiaNameShow" ></span><span id="date"></span>闸站水位流量</font>
+								</h3>  
+								<div  ><!-- 表格大小问题还未解决 style="padding-bottom:10px;margin-bottom:10px;border:2px solid black;" -->
+								<div> <!-- class="table-responsive" style="border:1px solid blue;" style="height:600px;" -->
 									<!-- data-show-toggle="true" data-show-columns="true" -->
-									<table data-toggle="table"
-										style=" text-align:center"
+									<table data-toggle="table" 
+										style=" text-align:center;"
 										class="table-striped table-bordered" id="WaterReportInfo"
 										data-cache="false" data-search="true" data-pagination="true"
 										data-page-size="5"  data-page-list="[5,10,20,50]"
@@ -222,7 +222,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<%--<h3 style="text-align:center;margin-top:-23px"><span id="stadiaNameShow"></span> 水情信息曲线图</h3>
 							--%>
 							  
-							<div id="damsRealWaterInfoChart" style="margin:10px 0px 0 0px;width:100%;height:400px;border:1px solid blue">							
+							<div id="damsRealWaterInfoChart" style="width:100%;height:400px;">							
 							</div>  <!--   静态水位流量曲线显示模块 -->
 							<%--<div id="damsWaterBarChart" style="margin:10px 0px 0 0px;width:100%;height:400px;">							
 							</div><!--   静态水位流量曲线显示模块 -->
@@ -231,11 +231,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						 
 							
 							<div  id="damNoData" style="display:none">
-							<h2 align="center">当前所选时间段没有数据，请重新选择时间……</h2>							
+							<h2 align="center" id="NoDataInfo">当前所选时间段没有数据，请重新选择时间……</h2>							
 							</div>
 							</div>
 							          
-                   				</div>
+                   			</div>
                     		</div>
                     
                     </div>
@@ -244,6 +244,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </section><!-- /.content -->         
        </aside>
 	</div>
-</div>
+<!-- </div>  -->
 </body>
 </html>

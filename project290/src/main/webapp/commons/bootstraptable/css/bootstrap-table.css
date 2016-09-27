@@ -26,6 +26,7 @@
 }
 
 .fixed-table-container {
+	padding-bottom: 15px !important;
     position: relative;
     clear: both;
     border: 1px solid #dddddd;
@@ -50,7 +51,7 @@
 .fixed-table-body {
     overflow-x: auto;
     overflow-y: auto;
-    height: 100%;
+    /* height: 100%; */    /* 高度调整 */
 }
 
 .fixed-table-container table {

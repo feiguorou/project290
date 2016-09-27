@@ -176,13 +176,14 @@
       and meaTime = #{meatime,jdbcType=TIMESTAMP}
   </update>
    
+  <!-- 这样可否提高效率？？ -->
   <select id="getHistoryWaterInfo" parameterType="com.whu.p290.dto.HistoryQueryParam" resultMap="BaseResultMap2">
-  	SELECT t2.Stadia_Name,t1.*
+	SELECT t2.Stadia_Name,t1.*
 	FROM (SELECT * 
 			FROM t_HistoryIrrBRWaterStadia
-			WHERE meaTime &lt;= #{endTime,jdbcType=CHAR} AND meaTime &gt;= #{beginTime,jdbcType=CHAR} AND stadiaCode = #{stadiaCode,jdbcType=CHAR}
+			WHERE meaTime &lt;= Convert(DateTime,#{endTime,jdbcType=CHAR}) AND meaTime &gt;= Convert(DateTime,#{beginTime,jdbcType=CHAR}) AND stadiaCode = #{stadiaCode,jdbcType=CHAR}
 			)t1
 	LEFT JOIN t_IrrBRStadia t2
-	ON t1.stadiaCode = t2.stadiaCode AND t1.stadiaCode = #{stadiaCode,jdbcType=CHAR} AND t2.stadiaCode = #{stadiaCode,jdbcType=CHAR}
-  </select>  <!-- 这样可否提高效率？？ -->
+	ON t1.stadiaCode = t2.stadiaCode AND t1.stadiaCode = #{stadiaCode,jdbcType=CHAR} 
+  </select>
 </mapper>

@@ -188,6 +188,7 @@
        ON t1.stadiaCode = t2.stadiaCode
        ORDER BY stadiaCode  
   </select>  -->
+  <!-- 查询最近一个小时的数据 -->
   <select id="getNewestWaterInfo" resultMap="BaseResultMap2">
   	   SELECT t2.Stadia_Name,t1.*
        FROM  (SELECT * 
@@ -198,10 +199,16 @@
        ON t1.stadiaCode = t2.stadiaCode
        ORDER BY stadiaCode  
   </select>
+  <!-- 查看某个测站当天的数据 -->
   <select id="getRTWaterInfoByStadiaCode" parameterType="java.lang.String" resultMap="BaseResultMap2">
-  	SELECT t2.Stadia_Name,t1.*
+	SELECT t2.Stadia_Name,t1.*
 	FROM  test.dbo.t_RealtimeIrrBRWaterStadia t1 INNER JOIN  test.dbo.t_IrrBRStadia t2
-	ON t1.meaTime &gt; DATEADD(d,-1,GETDATE()) t1.stadiaCode = t2.stadiaCode AND t1.stadiaCode = #{stadiaCode}
+	ON meaTime &gt; Convert(DateTime,Convert(Varchar(10),GetDate(),120)) 
+	   AND meaTime &lt; GETDATE()
+	   AND t1.stadiaCode = t2.stadiaCode AND t1.stadiaCode = #{stadiaCode}
 	ORDER BY meaTime
   </select>
+  
+    	
+  
 </mapper>

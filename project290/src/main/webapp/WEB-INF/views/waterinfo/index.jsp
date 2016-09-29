@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/commons/include/taglibs.jsp"%>
+<%@ include file="/commons/include/waterinfojs.jsp" %>
+<%@ include file="/commons/include/waterinfocss.jsp" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,91 +10,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <title>水情信息</title>
+    <script src="/project290/js/modules/waterinfo/waterinfo.js"></script> 
   </head>
-     <link href="/project290/css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-     <link href="/project290/commons/bootstraptable/css/bootstrap-table.css" rel="stylesheet" />
-	
-	 <!-- font Awesome -->
-	 <link href="/project290/css/bootstrap/fonts/font-awesome.min.css" rel="stylesheet" type="text/css" />
-     <!-- Ionicons -->
-     <!-- 这里！！！！！！！！！！ -->
-     <link href="/project290/css/ionicons.min.css" rel="stylesheet" type="text/css" />
- 	 <link href="/project290/css/AdminLTE-test.css" rel="stylesheet" type="text/css" />  
-     <!-- 时间选择 CSS-->
-	 <link href="/project290/css/bootstrap/css/bootstrap-clockpicker.min.css" rel="stylesheet" media="screen">
-	 <link href="/project290/css/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-	 <link href="/project290/css/bootstrap/css/bootstrap-treeview.min.css" rel="stylesheet" media="screen">
-
-	<script src="/project290/js/jQuery/jquery-2.1.4.min.js"></script>
-	<script src="/project290/js/bootstrap/bootstrap3.2.js" charset="UTF-8"></script>				
-	<script src="/project290/js/bootstraptable/bootstrap-table.js"></script>
-	<script src="/project290/js/bootstraptable/bootstrap-table-zh-CN.min.js"></script>
-
-	<!-- 导出扩展 -->
-	<script src="/project290/js/bootstraptable/bootstrap-table-export.js"></script>
-	<script src="/project290/js/bootstraptable/tableExport.js"></script>
-	<!-- 时间选择 JS-->
-	<script src="/project290/js/modules/waterinfo/waterInit.js"></script>
-	<script src="/project290/js/bootstrap/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-	<script src="/project290/js/bootstrap/bootstrap-clockpicker.min.js"></script>
-	<script src="/project290/js/bootstrap/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-	<script src="/project290/js/modules/datainfo/date.js" charset="UTF-8"></script>
-	<script src="/project290/js/modules/datainfo/base.js" charset="UTF-8"></script>
-	<!--测站名称显示  -->
-	
-	<script type="text/javascript" src="/project290/js/bootstrap/bootstrap-treeview.min.js"></script>
-
- 	<script src="/project290/js/highCharts/highcharts.js"></script>
-	<script src="/project290/js/highCharts/themes/grid.js"></script>
-	<script src="/project290/js/highCharts/modules/exporting.src.js"></script>
-	
-	<script src="/project290/js/modules/waterinfo/waterinfo.js"></script> 
+	<!-- 设置 树 的透明 -->
+	<style>
+	 #StadiaName ul li
+	 {
+	 	background-color:transparent;
+	 }
+	</style>
 
 <body>
 <!-- <div id="waterinfo" ng-controller="waterinfoController" style="">  -->
-	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-width:1600px;">
+<div style="background:url(/project290/images/modules/index/main_content.jpg); background-size:100% 100%; ">
+	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-width:1500px;overflow-x:hidden;background-color:transparent;" >
     	<!-- Left side column. contains the logo and sidebar -->
-        <aside class="left-side sidebar-offcanvas"  style="background-color:pink;"><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
+        <aside class="left-side sidebar-offcanvas"  style="background:url(/project290/images/modules/index/main_left.jpg)"><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
         <!-- sidebar: style can be found in sidebar.less --> 
-        	<SECTION class="sidebar" style=""><%-- style="background:url(../img/left_03.jpg)" --%>
+        	<SECTION class="sidebar" style="background-color:transparent;"><%-- style="background:url(../img/left_03.jpg)" --%>
             	<!-- Sidebar user panel -->
-           	    <div class="nav-tabs-custom"  style="background : transparent;"><%--style="background:url(../img/left_03.jpg)" --%><!-- Tabs within a box -->
+           	    <div class="nav-tabs-custom"  style="background-color : transparent;"><%--style="background:url(../img/left_03.jpg)" --%><!-- Tabs within a box -->
 			  		<!-- <ul class="nav nav-tabs pull-center">
                            <li class="active"><a href="#sales-chart" data-toggle="tab" onclick="showAllJSInfo()" style="font-size:30px; ">渠首总干渠</a></li>
                           </ul>
                     -->
-	                <div class="tab-content no-padding" style="background-color:'blue';"><!-- style="background:rgb(99, 178, 234)" -->
+	                <div class="tab-content no-padding" style="background-color:transparent;"><!-- style="background:rgb(99, 178, 234)" -->
 	                	<!-- Morris chart - Sales -->
-	                	<div class="chart tab-pane active" id="sales-chart" style="position: relative; background : transparent;"><!-- height:1000px; background-color:pink; -->
+	                	<div class="chart tab-pane active" id="sales-chart" style="position: relative; background-color : transparent;"><!-- height:1000px; background-color:pink; -->
 	                    	<!-- sidebar menu: : style can be found in sidebar.less -->
-	                   		<div id="StadiaName" style="background-color:blue;"><!--  style="background:url(/project290/images/modules/index/main_left.jpg)" -->
+	                   		<div id="StadiaName" style="background-color:transparent;"><!--  style="background:url(/project290/images/modules/index/main_left.jpg)" -->
 							</div>           
-							<div id="treeTest"></div>
+							<!-- <div id="treeTest"></div>  -->
 	                 	</div>
 	                </div>
                 </div><!-- /.nav-tabs-custom -->
 		 	</section>
         </aside> 
-        <aside class="right-side">
-        	<section class="content"  style="margin-left:30px;"><!-- class="content" style="padding:-100px -10px 0 0 " style="overflow: hidden;" -->
+        <aside class="right-side" style="background-color:transparent;">
+        	<section class="content"  style="margin-left:30px;background-color:transparent;"><!-- class="content" style="padding:-100px -10px 0 0 " style="overflow: hidden;" -->
 				<!-- 所有站点水情预览或者实时查询 --> 
-           	    <div class="nav-tabs-custom" style="margin-top:-0.5em;"><!--  -->
+           	    <div class="nav-tabs-custom" style="margin-top:-0.5em;background-color:transparent;"><!--  -->
                 	<!-- Tabs within a box -->
                     <ul class="nav nav-tabs pull-right">                      
                     	<li  id="stadiasRealInfo" class=""><a  data-toggle="tab" onclick="showQuery()">测站水情</a></li><!-- href="#stadiaInfoQuery" --> 
                         <li class="active" id="allStadiasRealInfo"><a  data-toggle="tab" onclick="showAll()">实时信息</a></li><!-- href="#allStadiaInfos" --> 
                     </ul>
-                    <div class="tab-content no-padding" ><!-- style="background:rgb(99, 178, 234)" -->
+                    <div class="tab-content no-padding" style="background-color:transparent;"><!-- style="background:rgb(99, 178, 234)" -->
                     
                                             	<!-- Morris chart - Sales -->
-                          	<div class="chart tab-pane  active" id="allStadiaInfos" style="position: relative;  padding-bottom:50px"><!-- height: 300px; padding-bottom:200px -->
+                          	<div class="chart tab-pane  active" id="allStadiaInfos" style="position: relative;  padding-bottom:50px;background-color:transparent;"><!-- height: 300px; padding-bottom:200px -->
                               <!-- sidebar menu: : style can be found in sidebar.less --> 
 								<!-- class="row" -->
                    				 <p style="text-align:center;font: bold 30px arial,sans-serif;margin:10px 0 -40px 0">实时信息</p>
-                   				 	<div class="table-responsive"  >
+                   				 	<div class="table-responsive"  style="background-color:transparent;">
 									<!-- data-show-toggle="true" data-show-columns="true" -->
 									<table data-toggle="table" id="allStadiasInfoTable"
-										style=" text-align:center; "
+										style=" text-align:center; background-color:transparent;"
 										class="table-striped table-bordered" id="allStadiasTable"
 										data-cache="false" data-search="true" data-pagination="true"
 										 data-page-size="20"  data-page-list="[20,30,50,70,ALL]"
@@ -114,15 +87,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>				                          
                   			</div>
                   			<!--测站实时查询 -->
-                   			<div class="chart tab-pane " id="stadiaInfoQuery" style="position: relative; padding-bottom:50px; ">
-                   				<div id="stadiaQuery">
+                   			<div class="chart tab-pane " id="stadiaInfoQuery" style="position: relative; padding-bottom:50px; background-color:transparent;">
+                   				<div id="stadiaQuery" style="background-color:transparent;">
 					                <!-- Main content -->  
-					                <div class="content"  id="showQueryInfo" >     <!--   style="display:none" -->                
+					                <div class="content"  id="showQueryInfo" style="background-color:transparent;">     <!--   style="display:none" -->                
 					            
-					                    <div class="row">
+					                    <div class="row" style="background-color:transparent;">
 					
-										<div class="col-xs-12 connectedSortable" >
-											<table >
+										<div class="col-xs-12 connectedSortable" style="background-color:transparent;">
+											<table style="background-color:transparent;">
 												<tr>
 													<td style="padding-left:20px">查询时间：</td>
 													<td style="padding-top:15px">
@@ -187,15 +160,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</div>
 										<!-- /.col -->
 									</div><!-- /.row 时间输入框-->
-							 <div id="damData" ><!-- 表格模块  class="row" -->
+							 <div id="damData" style="background-color:transparent;"><!-- 表格模块  class="row" -->
 								<h3 align='center' style="margin:0px 0px -30px 0px">
 									<font><span id="stadiaNameShow" ></span><span id="date"></span>闸站水位流量</font>
 								</h3>  
-								<div  ><!-- 表格大小问题还未解决 style="padding-bottom:10px;margin-bottom:10px;border:2px solid black;" -->
-								<div> <!-- class="table-responsive" style="border:1px solid blue;" style="height:600px;" -->
+								<div  style="background-color:transparent;"><!-- 表格大小问题还未解决 style="padding-bottom:10px;margin-bottom:10px;border:2px solid black;" -->
+								<div style="background-color:transparent;"> <!-- class="table-responsive" style="border:1px solid blue;" style="height:600px;" -->
 									<!-- data-show-toggle="true" data-show-columns="true" -->
 									<table data-toggle="table" 
-										style=" text-align:center;"
+										style=" text-align:center;background-color:transparent;"
 										class="table-striped table-bordered" id="WaterReportInfo"
 										data-cache="false" data-search="true" data-pagination="true"
 										data-page-size="5"  data-page-list="[5,10,20,50]"
@@ -222,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<%--<h3 style="text-align:center;margin-top:-23px"><span id="stadiaNameShow"></span> 水情信息曲线图</h3>
 							--%>
 							  
-							<div id="damsRealWaterInfoChart" style="width:100%;height:400px;">							
+							<div id="damsRealWaterInfoChart" style="width:100%;height:400px;background-color:transparent;">							
 							</div>  <!--   静态水位流量曲线显示模块 -->
 							<%--<div id="damsWaterBarChart" style="margin:10px 0px 0 0px;width:100%;height:400px;">							
 							</div><!--   静态水位流量曲线显示模块 -->
@@ -244,6 +217,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </section><!-- /.content -->         
        </aside>
 	</div>
-<!-- </div>  -->
+	</div>
+	 
 </body>
 </html>

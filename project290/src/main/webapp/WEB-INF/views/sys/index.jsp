@@ -31,7 +31,7 @@
 	<div id="left_wrapper" class="left-menu" style="width:250px;height:100%;position:absolute;{{height}}">
 	  <abn-tree tree-data="my_sys_data"  on-select="my_tree_hander(branch)" icon-leaf ='icon-user  glyphicon glyphicon-user  fa fa-user'></abn-tree>
 	</div>
-	<div id="right_wrapper" style="padding-left:250px">
+	<div id="right_wrapper" style="padding-left:250px;height:3000px">
 	  <div ui-view></div>
 	</div>
 </div>

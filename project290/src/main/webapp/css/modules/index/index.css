@@ -240,7 +240,7 @@ h4 {
 	position:relative;
     width: 100%;
 	background-repeat: no-repeat;
-    background: url(../../../images/modules/index/main_content.jpg);
+    background: url(/project290/images/modules/index/main_content.jpg);
     background-size:cover; 
   	-webkit-background-size:cover;
 }

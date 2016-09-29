@@ -9,7 +9,7 @@ public class IndexController {
 	@RequestMapping(value ="indexCtrl" , method= {RequestMethod.GET,RequestMethod.POST })
 	public String successLogin(HttpServletRequest request)
 	{
-		System.out.println("controller�㣺index");
+		System.out.println("controller：index");
 		return "index";
 	}
 	@RequestMapping(value ="index" , method= {RequestMethod.GET,RequestMethod.POST })

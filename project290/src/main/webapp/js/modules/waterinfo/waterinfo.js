@@ -280,18 +280,20 @@ function showHistoryTable(codeOfStadia){
 function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*timeData,*/{
 	console.log("闸上水位 ： " + heightUp);
 	console.log("闸下水位 ： " + heightDown);
-	jq("#damsRealWaterInfoChart").highcharts(
+	new Highcharts.Chart(
 			{
 				chart:
 				{ 
+					 type: 'column',
+	                 renderTo:"damsRealWaterInfoChart",//这里是div的id
 			        animation: Highcharts.svg, 
-			      events:{
+			        events:{
 			        	
 			        	load:function(){
 			        		
 			        		dynamicLoadStyle(flag);
-			        	}
-			       }
+			        	 }
+			        }
 			        
 				},
 				title:
@@ -415,7 +417,144 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 			function(chartObj)
 			{
 				chart = chartObj;
-			});
+			}
+	);
+//	jq("#damsRealWaterInfoChart").highcharts(
+//			{
+//				chart:
+//				{ 
+//			        animation: Highcharts.svg, 
+//			        events:{
+//			        	
+//			        	load:function(){
+//			        		
+//			        		dynamicLoadStyle(flag);
+//			        	 }
+//			        }
+//			        
+//				},
+//				title:
+//				{
+//					text: '闸站水位流量折线图'
+//				},
+//				tooltip: 
+//				{
+//					xDateFormat: '%Y-%m-%d %H:%M:%S',
+//					 shared: true
+//				},
+//				xAxis:
+//				{
+//					title: {
+//		                text: '采集时间'
+//		            },
+//		            type: 'datetime',  
+//		           showFirstLabel: true,
+//		            startOnTick: true,
+//		           endOnTick: true,
+//				},
+//				yAxis: 
+//				[{ // Primary yAxis
+//				   plotLines: 
+//				   [{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
+//	                    color: '#000',
+//	                    dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
+//	                    width: 1.5,
+//	                    value: waterLeverDesign,  //y轴显示位置
+//	                    zIndex: 5,
+//	                    label: 
+//	                    {                   	
+//	                        text: waterLeverDesign +'m',
+//	                        align: 'right',
+//	                        x: -10, 
+//	                     }
+//	               }],
+//		           labels: 
+//		           {
+//		                formatter: function() {
+//		                    return this.value +'m';
+//		                },
+//		                style: {
+//		                    color: '#4572A7'
+//		                }
+//		            },
+//		           title: 
+//		           {
+//		                text: '闸站水位',
+//		                style: {
+//		                    color: '#4572A7'
+//		                }
+//		            },
+//		            opposite:false
+//
+//		         }, 
+//		         { // Secondary yAxis
+//		            gridLineWidth: 0,
+//		            title: {
+//		                text: '流量',
+//		                style: {
+//		                    color: '#AA4643'
+//		                }
+//		            },
+//		            labels: {
+//		                formatter: function() {
+//		                    return this.value +'m³/s';
+//		                },
+//		                style: {
+//		                    color: '#AA4643'
+//		                }
+//		            },
+//		            opposite: true
+//		         }],
+//		        plotOptions: 
+//		        {
+//		            series: 
+//		            {
+//		            	 marker: 
+//		            	 {
+//		                     enabled: true
+//		            	 },
+//		            },
+//		        },
+//				series: [{  
+//					name: '闸上水位',
+//		            color: '#4572A7',
+//		            type: 'line',
+//		            yAxis: 0,
+//		            tooltip: {
+//		                valueSuffix: ' m'
+//		            },
+//		            data: heightUp, 
+//		            selected: true
+//		        }, {
+//		            name: '闸下水位',
+//		            type: 'line',
+//		            color: '#89A54E',
+//		            yAxis: 0,
+//		            data: heightDown,   
+//		           
+//		            tooltip: {
+//		                valueSuffix: ' m'
+//		            },
+//		            selected: true
+//
+//		        }, {
+//		            name: '流量',
+//		            color: '#AA4643',
+//		            type: 'line',
+//		            yAxis: 1,
+//		            data: fluxGate, 
+//		            dashStyle: 'shortdot',//  shortdot longdashdot
+//		          tooltip: {
+//		                valueSuffix: ' m³/s'
+//		            },
+//		            selected: true
+//		             }]
+//				
+//			},
+//			function(chartObj)
+//			{
+//				chart = chartObj;
+//			});
 }	
 
 

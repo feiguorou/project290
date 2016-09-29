@@ -36,8 +36,6 @@
 					</li>
 					<li><a ui-sref="sys.userinfo" ui-sref-active="current">系统管理</a>
 					</li>
-					<li><a ui-sref="user" ui-sref-active="current">用户管理</a>
-					</li>
 			</ul>
          </div>
         </div>
@@ -55,7 +53,7 @@
      </div>
     <%@ include file="/commons/include/javascript.jsp" %>
     <script type="text/javascript" src="${ctx}/js/modules/index/index.js" ></script>
-    <!-- <script type="text/javascript" src="${ctx}/js/modules/soil/soil.js" ></script>  -->
+    <!-- <script type="text/javascript" src="${ctx}/js/modules/waterinfo/waterinfo.js" ></script>  -->
     
     
 </body>

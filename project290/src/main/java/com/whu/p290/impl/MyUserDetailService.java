@@ -22,6 +22,7 @@ public class MyUserDetailService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
+		System.out.println("*******************用户名 ：" + username);
 		UserParam userParam = new UserParam();
 		userParam.setUsername(username);
 		TestUserResult testUserResult =null;

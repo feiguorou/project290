@@ -174,7 +174,7 @@
 	//机井控制部分结束
 		  .state('waterinfo',{
 			  url: '/waterinfo',
-			  templateUrl: 'waterinfo/indexCtrl',
+			  templateUrl: 'waterinfo/indexCtrl'
 //			  resolve:{
 //				  deps:['$ocLazyLoad',
 //				        function($ocLazyLoad){
@@ -240,14 +240,10 @@
                    console.log("get sys sysDepsManuser");
                 }]
            }
-	      })
-	      .state('user',{
-	    	url: '/user',
-	    	templateUrl: 'sys/user',
 	      });
 	      $urlRouterProvider.when('/profile', function(){});
 	      $urlRouterProvider.when('/home', function(){});
-	      $urlRouterProvider.otherwise('/waterinfo');
+	      $urlRouterProvider.otherwise('/sys/userinfo');
 	  });
 	
      myMain.controller('headerController',['$scope','$location',function($scope,$location){

@@ -34,25 +34,7 @@ public class SysController {
 		
 		TestUserResult testUserResult = new TestUserResult();
 		testUserResult = userService.getCurrentLoginUser();
-		System.out.println("当前用户  ：  " + testUserResult.getUsername());
-		System.out.println("密码 ：" + testUserResult.getPassword());
-		System.out.println("真是姓名 ：  " + testUserResult.getRealname());
 		return testUserResult;
-//		UserResult userResult = new UserResult();
-//		System.out.println("获取当前用户");
-//		userResult.setUsername("Jaco");
-//		userResult.setPassword("123");
-//		userResult.setEmail("jaco12138@gmail.com");
-//		userResult.setLoginip("127.0.0.1");
-//		userResult.setLogintime( new Timestamp(System.currentTimeMillis()) );
-//		userResult.setPasswordtime( new Timestamp(System.currentTimeMillis()));
-//		userResult.setRandom("random");
-//		userResult.setSex(0);
-//		userResult.setRealname("张家浩");
-//		userResult.setRole(0);
-//		userResult.setSextext("男");
-//		userResult.setRoletext("管理员");
-//		return userResult;
 	}
 	@ResponseBody
 	@RequestMapping(value ="updateCurrentUserCtrl" , method= {RequestMethod.GET,RequestMethod.POST })

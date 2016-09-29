@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService{
 		    param.setUsername(userDetails.getUsername());
 		    TestUserResult testUserResult = null;
 	        List<TestUserResult> list = userMapper.getUsers(param);
+	        TestUserResult result = list.get(0);
 	        if(list==null||list.size()==0)
 	        {
 	        	

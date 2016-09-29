@@ -35,7 +35,7 @@ public class MyUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userResult.getUsername();
+		return userResult.getUser_name();
 	}
 
 	@Override

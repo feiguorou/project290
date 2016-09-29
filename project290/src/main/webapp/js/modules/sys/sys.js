@@ -38,9 +38,6 @@
 		    },{
 			label: '管理用户',
 		    classes: ["special", "red"],
-			},{
-			label: '更多操作',
-			classes: ["special","red"],
 			}];
 		 $scope.my_tree_hander = function(branch){
 			 console.log(branch);
@@ -134,14 +131,14 @@
 					      url:'/project290/sys/updateCurrentUserCtrl',
 					      method:'POST',
 					      responseType:'json',
-					      params:{username:$scope.user.username,
+					      params:{user_name:$scope.user.username,
 					    	      password: $scope.user.password,
 					    	      sex:parseInt($scope.user.sex),
 					    	      realname:$scope.user.realname}
 				       })
 				       .success(function(data,status,headers,config) 
 				       {
-				    	   console.log(data);
+				    	   console.log("上传的名字：" + $scope.user.username);
 				    	   if(data.status=="ok")
 				    	   {
 	                         $scope.formInfo="更新成功";
@@ -167,7 +164,10 @@
 	       {
 	    	   if(data!=null)
 	    	   {
-	    		   $scope.user.username=data.username;
+	    		   console.log("用户的基本信息 ： ");
+	    		   console.log(data.user_name + data.password + data.sex + data.realname +data.role);
+	    		   console.log("*************");
+	    		   $scope.user.username=data.user_name;
 	    		   $scope.user.password=data.password;
 	    		   $scope.user.repassword=data.password;
 	    		   $scope.user.sex=data.sex;

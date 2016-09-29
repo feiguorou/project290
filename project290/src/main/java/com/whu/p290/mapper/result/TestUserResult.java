@@ -2,18 +2,18 @@ package com.whu.p290.mapper.result;
 
 public class TestUserResult {
 	private String id;
-	private String username;
+	private String user_name;
 	private String password;
 	private Integer role;
 	private Integer sex;
 	private String realname;
 	private Integer age;
 	
-	public String getUsername() {
-		return username;
+	public String getUser_name() {
+		return user_name;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	public String getPassword() {
 		return password;

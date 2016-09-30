@@ -131,7 +131,7 @@
 					      url:'/project290/sys/updateCurrentUserCtrl',
 					      method:'POST',
 					      responseType:'json',
-					      params:{user_name:$scope.user.username,
+					      params:{username:$scope.user.username,
 					    	      password: $scope.user.password,
 					    	      sex:parseInt($scope.user.sex),
 					    	      realname:$scope.user.realname}

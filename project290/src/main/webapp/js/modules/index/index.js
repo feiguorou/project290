@@ -182,6 +182,10 @@
 //				  }]
 //			  }
 		  })
+		  .state('alarmquery', {
+						url : '/alarmquery',
+						templateUrl : 'alarmquery/indexCtrl'
+					})
 	      .state('datainfo',{
 	    	url: '/datainfo',
 	        templateUrl: 'datainfo/indexCtrl',

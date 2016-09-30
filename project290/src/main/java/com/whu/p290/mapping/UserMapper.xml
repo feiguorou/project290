@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         values (#{username},#{password},#{sex},#{role},#{realname,jdbcType=VARCHAR})
     </insert>
     <update id="updateUser" parameterType="com.whu.p290.mapper.param.UserParam">
-         update t_User 
+         update user_t 
 		 <set>
 		 	<if test="password !=null and password !=''">
 		 		PASSWORD =#{password},
@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 		REALNAME =#{realname},
 		 	</if>
 		</set>
-         where  USERNAME = #{username}
+         where  USER_NAME = #{username}
     </update>
     <delete id="deleteUser" parameterType="java.lang.String">
         delete t_User where USERNAME=#{_parameter}

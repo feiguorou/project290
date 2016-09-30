@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- author lyx; date 2016.09.28 -->
+<mapper namespace="com.whu.p290.dao.AlarmQueryDao">
+	<select id="selectAlarmInfo" parameterType="com.whu.p290.mapper.param.AlarmQueryParam"
+		resultType="com.whu.p290.mapper.result.AlarmQueryResult">
+		select a.stadiaCode, a.meaTime, a.ctt, a.status,
+		b.Stadia_Name as stadiaName
+		from t_IrrBRWaterLevelAlarm a join t_IrrBRStadia b on a.stadiaCode =
+		b.stadiaCode
+		where a.stadiaCode = #{stadiaCode} and (a.meaTime
+		between
+		#{beginTime} and #{endTime})
+	</select>
+	
+	<select id="selectAlarmInfoByOnlyTime" parameterType="com.whu.p290.mapper.param.AlarmQueryParam"
+		resultType="com.whu.p290.mapper.result.AlarmQueryResult">
+		select a.stadiaCode, a.meaTime, a.ctt, a.status,
+		b.Stadia_Name as stadiaName
+		from t_IrrBRWaterLevelAlarm a join t_IrrBRStadia b on a.stadiaCode =
+		b.stadiaCode
+		where a.meaTime between #{beginTime} and #{endTime}
+	</select>
+
+	<select id="selectAllAlarmInfo" resultType="com.whu.p290.mapper.result.AlarmQueryResult">
+		select a.stadiaCode,
+		a.meaTime, a.ctt, a.status, b.Stadia_Name as stadiaName
+		from t_IrrBRWaterLevelAlarm a join t_IrrBRStadia b on a.stadiaCode =
+		b.stadiaCode
+		where 1=1
+	</select>
+
+	<select id="selectAlarmInfoByCode" parameterType="java.lang.String"
+		resultType="com.whu.p290.mapper.result.AlarmQueryResult">
+		select a.stadiaCode, a.meaTime, a.ctt, a.status,
+		b.Stadia_Name as stadiaName
+		from t_IrrBRWaterLevelAlarm a join t_IrrBRStadia b on a.stadiaCode =
+		b.stadiaCode
+		where a.stadiaCode = #{stadiaCode}
+	</select>
+
+</mapper>

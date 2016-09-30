@@ -30,7 +30,7 @@
 					</li>
 					<li><a ui-sref="soli.map" ui-sref-active="current">渠道检测</a>
 					</li>
-					<li><a ui-sref="control.basicinfo" ui-sref-active="current">报警查询</a>
+					<li><a ui-sref="alarmquery" ui-sref-active="current">报警查询</a>
 					</li>
 					<li><a ui-sref="datainfo" ui-sref-active="current">数据录入</a>
 					</li>

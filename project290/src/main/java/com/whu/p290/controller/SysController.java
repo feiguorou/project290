@@ -38,10 +38,20 @@ public class SysController {
 	}
 	@ResponseBody
 	@RequestMapping(value ="updateCurrentUserCtrl" , method= {RequestMethod.GET,RequestMethod.POST })
-	public Map<String,String> updateCurrentUser()//UserDto user
+	public Map<String,String> updateCurrentUser(UserParam userParam)//UserDto user
 	{
+		System.out.println("************zjh**********");
+		System.out.println("控制层更新用户信息 ： " + userParam.getUsername());
+		Integer result = userService.updateUser(userParam);
 		Map<String,String> map = new HashMap<>();
-		map.put("status", "ok");
+		if(result > 0)
+		{
+			map.put("status", "ok");
+		}
+		else
+		{
+			map.put("status", "err");
+		}
 		return map;
 	}
 	@ResponseBody

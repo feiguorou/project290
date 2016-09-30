@@ -75,5 +75,12 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
+	@Override
+	public Integer updateUser(UserParam userParam) {
+		// TODO Auto-generated method stub
+		Integer flag = userMapper.updateUser(userParam);
+		return flag;
+	}
+
 	
 }

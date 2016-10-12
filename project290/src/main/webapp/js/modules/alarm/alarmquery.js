@@ -144,6 +144,7 @@ function treeInit() {
 		data : canalTreeData,
 		showTags : true,
 		levels : 1,
+		backColor: 'transparent',
 		onNodeSelected : function(event, data) {
 			inputCodeOfStadia = data.codeOfStadia;
 			getAlarmInfosByCode(inputCodeOfStadia);

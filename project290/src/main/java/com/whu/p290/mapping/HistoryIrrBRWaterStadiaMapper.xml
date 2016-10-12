@@ -13,6 +13,7 @@
     <result column="openDegree4" property="opendegree4" jdbcType="NUMERIC" />
     <result column="openDegree5" property="opendegree5" jdbcType="NUMERIC" />
     <result column="gateState" property="gatestate" jdbcType="CHAR" />
+    <result column="floodNumber" property="floodnumber" jdbcType="NUMERIC"/>
   </resultMap>
   <resultMap id="BaseResultMap2" type="com.whu.p290.dto.HistoryIrrBRWaterInfo" >
     <id column="stadiaCode" property="stadiacode" jdbcType="CHAR" />

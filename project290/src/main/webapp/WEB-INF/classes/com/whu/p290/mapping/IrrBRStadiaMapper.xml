@@ -18,6 +18,14 @@
     <result column="ENG_MAN_CD" property="engManCd" jdbcType="CHAR" />
     <result column="Time_Sign" property="timeSign" jdbcType="TIME" />
     <result column="Remark" property="remark" jdbcType="VARCHAR" />
+    <result column="gateOpenCount" property="gateOpenCount" jdbcType="NUMERIC"/>
+    <result column="stackNum" property="stackNum" jdbcType="NUMERIC"/>
+    <result column="stackLen" property="stackLen" jdbcType="NUMERIC"/>
+    <result column="verHeight" property="verHeight" jdbcType="NUMERIC"/>
+    <result column="xbHeight" property="xbHeight" jdbcType="NUMERIC"/>
+    <result column="deviceType" property="deviceType" jdbcType="VARCHAR"/>
+    <result column="radarHeight" property="radarHeight" jdbcType="NUMERIC"/>
+    <result column="rtuStatus" property="rtuStatus" jdbcType="VARCHAR"/>
   </resultMap>
   <sql id="Base_Column_List" >
     stadiaCode, Stadia_Name, Stadia_Type, LOC_CODE, WaterDam_D, STBK, FLOW_DIR, DAT_TP, 

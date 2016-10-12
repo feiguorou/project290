@@ -36,6 +36,22 @@ public class IrrBRStadia {
 
     private String remark;
 
+    private BigDecimal gateOpenCount;
+    
+    private BigDecimal stackNum;
+    
+    private BigDecimal stackLen;
+    
+    private BigDecimal verHeight;
+    
+    private BigDecimal xbHeight;
+    
+    private String deviceType;
+    
+    private BigDecimal radarHeight;
+    
+    private String rtuStatus;
+    
     public String getStadiacode() {
         return stadiacode;
     }
@@ -163,4 +179,68 @@ public class IrrBRStadia {
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
     }
+
+	public BigDecimal getGateOpenCount() {
+		return gateOpenCount;
+	}
+
+	public void setGateOpenCount(BigDecimal gateOpenCount) {
+		this.gateOpenCount = gateOpenCount;
+	}
+
+	public BigDecimal getStackNum() {
+		return stackNum;
+	}
+
+	public void setStackNum(BigDecimal stackNum) {
+		this.stackNum = stackNum;
+	}
+
+	public BigDecimal getStackLen() {
+		return stackLen;
+	}
+
+	public void setStackLen(BigDecimal stackLen) {
+		this.stackLen = stackLen;
+	}
+
+	public BigDecimal getVerHeight() {
+		return verHeight;
+	}
+
+	public void setVerHeight(BigDecimal verHeight) {
+		this.verHeight = verHeight;
+	}
+
+	public BigDecimal getXbHeight() {
+		return xbHeight;
+	}
+
+	public void setXbHeight(BigDecimal xbHeight) {
+		this.xbHeight = xbHeight;
+	}
+
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
+
+	public BigDecimal getRadarHeight() {
+		return radarHeight;
+	}
+
+	public void setRadarHeight(BigDecimal radarHeight) {
+		this.radarHeight = radarHeight;
+	}
+
+	public String getRtuStatus() {
+		return rtuStatus;
+	}
+
+	public void setRtuStatus(String rtuStatus) {
+		this.rtuStatus = rtuStatus;
+	}
 }

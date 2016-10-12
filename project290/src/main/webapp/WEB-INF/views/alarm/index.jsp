@@ -58,20 +58,18 @@
 
 <body>
 	<div id="alarminfo" ng-controller="alarminfoController"
-		style="height:1000px">
+		style="background:url(/project290/images/modules/index/main_content3.jpg); background-size:100% 100%; " >
 		<div class="wrapper row-offcanvas row-offcanvas-left"
-			style="min-width:1300px;">
+			style="min-width:1500px;background-color:transparent;">
 			<!-- left side -->
-			<aside class="left-side sidebar-offcanvas"
-				style="width:250px;background:url(/project290/images/modules/index/main_left.jpg)">
-				<section class="sidebar" style="background : transparent;">
-					<div class="nav-tabs-custom" style="background : transparent;">
+			<aside class="left-side sidebar-offcanvas" style="background-color:transparent;">
+				<section class="sidebar" style="background-color:transparent;">
+					<div class="nav-tabs-custom" style="background-color:transparent;">
 						<div class="tab-content no-padding"
-							style="background : transparent;">
+							style="background-color:transparent;">
 							<div class="chart tab-pane active" id="sales-chart"
-								style="position: relative; background : transparent;">
-								<div id="StadiaName"
-									style="background:url(/project290/images/modules/index/main_left.jpg)">
+								style="position: relative; background-color:transparent;">
+								<div id="StadiaName" style="background-color:transparent;">
 								</div>
 							</div>
 						</div>
@@ -79,12 +77,12 @@
 				</section> 
 			</aside>
 			<!-- right content -->
-			<aside class="right-side" > 
-				<section class="content" style="margin-left:30px;">
+			<aside class="right-side" style="background-color:transparent;"> 
+				<section class="content" style="margin-left:30px;background-color:transparent;">
 					<!-- time input row -->
-					<div class="row">
-						<div class="col-xs-12 connectedSortable">
-							<table >
+					<div class="row" style="background-color:transparent;">
+						<div class="col-xs-12 connectedSortable" style="background-color:transparent;">
+							<table style="background-color:transparent;">
 								<tr>
 									<td style="padding-left:20px">查询时间：</td>
 									<!-- begin time input -->
@@ -142,18 +140,18 @@
 						</div>
 					</div><!-- end time input row -->
 					
-					<div class="nav-tabs-custom" style="margin-top:-0.5em;">
-						<div class="tab-content no-padding">
-							<div class="chart tab-pane active" id="allAlarmInfos" style="position: relative;  padding-bottom:50px">
+					<div class="nav-tabs-custom" style="margin-top:-0.5em;background-color:transparent;">
+						<div class="tab-content no-padding " style="background-color:transparent;">
+							<div class="chart tab-pane active" id="allAlarmInfos" style="position: relative;  padding-bottom:50px;background-color:transparent;">
 	                   			<p style="text-align:center;font: bold 30px arial,sans-serif;margin:10px 0 -40px 0">闸站报警信息</p>
-	                   			<div class="table-responsive"  >
+	                   			<div class="table-responsive"  background-color:transparent;>
 									<table data-toggle="table" id="allAlarmInfoTable"
-										style="text-align:center"
-										class="table-striped table-bordered" 
+										style="text-align:center;background-color:transparent;"
+										class=" table-bordered" 
 										data-cache="false" data-search="true" data-pagination="true"
 										data-page-size="20" data-page-list="[20,30,50,70,ALL]"
 										data-select-item-name="toolbar1" data-show-export="true">
-										<thead>
+										<thead><!-- class="table-striped" -->
 											<tr>
 											    <th data-field="stadiaName"  data-align="center">闸站名称</th>
 											    <th data-field="meaTime"  data-align="center">采集时间</th>

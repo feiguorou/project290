@@ -226,11 +226,11 @@
 				    	   console.log(data);
 				    	   if(data.status=="ok")
 				    	   {
-	                         $scope.formInfo="更新成功";
+	                         $scope.formInfo="添加成功！";
 				    	   }
 				    	   else
 				    	   {
-				    		 $scope.formInfo="用户名已存在,更新失败";
+				    		 $scope.formInfo="用户名已存在,更新失败！";
 				    	   }
 				       })
 				       .error(function(error){
@@ -249,8 +249,6 @@
 	    	var usernames = jQuery.map(jQuery("#manuserTable").bootstrapTable('getSelections'), function (row) {
                 return row.username;
             });
-	    	//console.log(usernames);
-	    	
 	    	
 			$http({
 			      url:'/project290/sys/deleteUsersCtrl',

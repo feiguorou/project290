@@ -38,18 +38,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	}
 	</style>
 <body>
-<div id="datainfo" ng-controller="datainfoController" ><!-- style="height:2000px" -->
+<div id="datainfo" ng-controller="datainfoController" style="border:1px solid black; width:90em; padding:10px;"><!-- style="height:2000px" -->
 	<form role="form" name="myForm" ng-submit="submitForm(myForm.$valid)" class="form-horizontal" novalidate>
         <h1 class="text-center" style="color:#000;font-weight:bold;">测站信息录入与修改</h1>
         <h3 class="text-center" style="margin-bottom:1.5em;color:#a22;"><em class="text-warning"><font color="red">*</font></em>为必须填写的内容&nbsp&nbsp<em class="text-warning">*</em>只能填写数字</h3>
         <h3 class="text-center" style="margin-bottom:1.5em;color:#a22;"><span ng-bind="stateInfo"></span></h3>
+        <!-- 第一行 -->
 		<div class="form-group  form-group-lg has-feedback">
 			<div class="col-md-2">
 				<label for="czmc" class="control-label">测站名称:</label>
 			</div>
 			<div class="col-md-4">
-				<input class="form-control " id="czmc" name="czmc" type="text"
-					ng-model='station.czmc' ng-disabled="isCzmc"/>
+				<select class="form-control" id="czmc" name="czmc" ng-options="key for (key,value in cemcs)" ng-model="station.czmc" ng-change="changeStadiaName();">
+					<option value="" selected style='display:none;'>--请选择--</option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+				</select>
+				<!-- <input class="form-control " id="czmc" name="czmc" type="text"
+					ng-model='station.czmc' ng-disabled="isCzmc"/>  -->
 			</div>
 			<div class="col-md-2">
 				<label for="czlx" class="control-label">&nbsp&nbsp&nbsp测站类型:</label>
@@ -60,7 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </select>
 			</div>
 		</div>
-		
+		<!-- 第二行 -->
 		<div class="form-group  form-group-lg has-feedback">
 			<div class="col-md-2">
 				<label for="wz" class="control-label">位置<em class="text-warning"><font color="red">*</font></em>:</label>
@@ -79,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		
-				<div class="form-group  form-group-lg has-feedback">
+		<div class="form-group  form-group-lg has-feedback">
 			<div class="col-md-2">
 				<label for="sllx" class="control-label">水流流向:</label>
 			</div>
@@ -175,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		
 	    <div class="form-group  form-group-lg has-feedback">
-			<div class="col-md-10 col-md-offset-2">
+			<div class="col-md-10 col-md-offset-3">
 			    <button type="button" ng-click="createOne()" class="btn btn-info">&nbsp&nbsp&nbsp&nbsp&nbsp添&nbsp&nbsp&nbsp&nbsp加&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                 &nbsp<button type="button" ng-click="changeState()" class="btn btn-info">&nbsp&nbsp&nbsp&nbsp&nbsp<span ng-bind="modifyInfo1"></span>&nbsp&nbsp&nbsp&nbsp<span ng-bind="modifyInfo2"></span>&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                 &nbsp<button type="submit" ng-disabled="!((!isViewstate)&&myForm.$dirty&&myForm.$valid)" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp保&nbsp&nbsp&nbsp&nbsp存&nbsp&nbsp&nbsp&nbsp&nbsp</button>
@@ -185,7 +192,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 	</form>
-			<div>
+			<div style="border:1px solid red; align:center;">
 			 	<div ng-show="viewFlag" class="chart tab-pane" id="sales-chart" width="70em" >
 		                    <div id="inquire2" align="center">
 		                        <div class="table-responsive" align="center" >

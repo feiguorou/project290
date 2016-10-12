@@ -38,7 +38,7 @@ function treeInit(){
 	console.log("Json：" + JSON.stringify(canalTreeData));
 	jq('#StadiaName').treeview({
 			data: canalTreeData,
-			animated: '5',
+			animated: '1',
 			//persist:'location',//页面刷新不保留折叠状态
 			showTags: true,
 			levels: 1,
@@ -312,8 +312,12 @@ function showLineChart(heightUp,heightDown,fluxGate,flag,waterLeverDesign)/*time
 		            },
 		            type: 'datetime',  
 		           showFirstLabel: true,
-		            startOnTick: true,
-		           endOnTick: true,
+		           /*
+		            *以下两个参数：true表示 多现实前后一天
+		            *false表示直接从原点显示 
+		            */
+		           startOnTick: false,
+		           endOnTick: false,
 				},
 				yAxis: 
 				[{ // Primary yAxis

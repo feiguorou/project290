@@ -20,6 +20,8 @@ public class HistoryIrrBRWaterStadia extends HistoryIrrBRWaterStadiaKey {
     private BigDecimal opendegree5;
 
     private String gatestate;
+    
+    private BigDecimal floodnumber;
 
     public BigDecimal getHeightup() {
         return heightup;
@@ -92,4 +94,12 @@ public class HistoryIrrBRWaterStadia extends HistoryIrrBRWaterStadiaKey {
     public void setGatestate(String gatestate) {
         this.gatestate = gatestate == null ? null : gatestate.trim();
     }
+
+	public BigDecimal getFloodnumber() {
+		return floodnumber;
+	}
+
+	public void setFloodnumber(BigDecimal floodnumber) {
+		this.floodnumber = floodnumber;
+	}
 }

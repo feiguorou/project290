@@ -2,6 +2,10 @@ var sysModule = angular.module("sysModule",[]);
 
 sysModule.controller('datainfoController',['$scope','$http',function($scope,$http){
 
+	$scope.changeStadiaName = function()
+	{
+		alert("选择 ：" + $scope.station.czmc);
+	}
 	
 	function initState()
 	{

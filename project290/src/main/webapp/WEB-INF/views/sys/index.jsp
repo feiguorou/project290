@@ -3,7 +3,8 @@
 <style type="text/css">
 #left_wrapper.left-menu
 {
-   background: url(${ctx}/images/modules/index/main_left.jpg);
+    background: url(${ctx}/images/modules/index/main_left.jpg); 
+   /* background-color:transparent; */
    background-size:100% 100%; 
 }
 #left_wrapper ul li 
@@ -27,11 +28,11 @@
 	width:calc(100%-162px);
 }
 </style>
-<div ng-controller="sysTreeController" id="sys-content">
+<div ng-controller="sysTreeController" id="sys-content" style="height:100%; background:url(${ctx}/images/modules/index/main_content2.jpg);">
 	<div id="left_wrapper" class="left-menu" style="width:250px;height:100%;position:absolute;{{height}}">
 	  <abn-tree tree-data="my_sys_data"  on-select="my_tree_hander(branch)" icon-leaf ='icon-user  glyphicon glyphicon-user  fa fa-user'></abn-tree>
 	</div>
-	<div id="right_wrapper" style="padding-left:250px;height:3000px">
+	<div id="right_wrapper" style="padding-left:250px; background-color:transparent;">
 	  <div ui-view></div>
 	</div>
 </div>

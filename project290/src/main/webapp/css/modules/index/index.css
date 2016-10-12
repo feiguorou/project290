@@ -123,7 +123,8 @@ h4 {
 #main{
       width:100%;
       height:100%;
-      background: url(../../../images/modules/index/main_content.jpg);
+      background: url(../../../images/modules/index/main_content.jpg); 
+      /*background-color:#FFFFFF;*/
         	background-size:cover; 
   	-webkit-background-size:cover;
    }
@@ -136,7 +137,7 @@ h4 {
    	height:130px;
     padding: 0 10px;
 	margin: 0 auto;	
-    background: url(../../../images/modules/index/main_head.jpg);
+    background: url(../../../images/modules/index/main_head7.jpg);
 	background-size:  1920px 130px;
 }
 #header_menu_wrapper
@@ -144,7 +145,7 @@ h4 {
 	height:32px;
 	width:100%;
 	margin: 0 auto;	
-    background: url(../../../images/modules/index/main_menu.jpg);
+    background: url(../../../images/modules/index/main_menu3.jpg);
 	background-size:  1920px 100%;
 	
 }
@@ -165,14 +166,16 @@ h4 {
     margin-left: auto;
     margin-bottom: 0px;
 	list-style: none;
-	float:right;
+	/*float:right; Ô­À´*/
+	float : left;/*jaco@2016.09.30*/
 }
 
 #logout li a.no-border
 {
 	border: none;
 	text-decoration:underline;
-	color:#e22;
+	/*color:#e22; */ 
+	color:#000000;
 }
 
 #logout
@@ -201,7 +204,7 @@ h4 {
 
 
 #header_menu ul li a {
-	float: left;
+	float: left; 
 	display: block;
 	height: 32px;
 	line-height:32px;
@@ -239,8 +242,14 @@ h4 {
 {
 	position:relative;
     width: 100%;
+    height:100%;
 	background-repeat: no-repeat;
-    background: url(/project290/images/modules/index/main_content.jpg);
+    background: url(../../../images/modules/index/main_content.jpg);
     background-size:cover; 
   	-webkit-background-size:cover;
+}
+/*jaco@2016.09.30 20:36*/
+#stadiasRealInfo:hover
+{
+	color:#ffffff;
 }

@@ -3,6 +3,7 @@ package com.whu.p290.controller;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -84,20 +85,34 @@ public class SysController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "getOtherUsersCtrl" , method = {RequestMethod.GET,RequestMethod.POST})
-	public List<SimpleUserResult> getOtherUsers()
+	public List<UserResult> getOtherUsers(String username)
 	{
-		List<SimpleUserResult> list = new ArrayList<>();
-		SimpleUserResult result = null;
-		 for(int i = 0; i < 10; i++)
-		 {
-			 result = new SimpleUserResult();
-			 result.setUsername(i+"");
-			 result.setPassword(i+"");
-			 result.setRealname(i+""+i);
-			 result.setRoletext(""+i);
-			 result.setSextext(""+i);
-			 list.add(result);
-		 }
+		List<UserResult> list = new ArrayList<>();
+		list = userService.getOtherUsers(username);
+		UserResult result = null;
+		Iterator<UserResult> iterator = list.iterator();
+		while(iterator.hasNext())
+		{
+			result = iterator.next();
+			System.out.println("************jaco**********用户名 ：" + result.getUsername());
+			
+		}
 		return list;
+	}
+	@ResponseBody
+	@RequestMapping(value="deleteUsersCtrl", method={RequestMethod.GET,RequestMethod.POST})
+	public Map<String,String> deleteUsers(String usernames)
+	{
+		int flag = userService.deleteUser(usernames);
+		Map<String,String> map = new HashMap<>();
+		if(flag > 0)
+		{
+			map.put("status", "ok");
+		}
+		else
+		{
+			map.put("status", "err");
+		}
+		return map;
 	}
 }

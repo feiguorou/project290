@@ -22,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <body>
 <!-- <div id="waterinfo" ng-controller="waterinfoController" style="">  -->
-<div style="background:url(/project290/images/modules/index/main_content.jpg); background-size:100% 100%; ">
+<div style="background:url(/project290/images/modules/index/main_content3.jpg); background-size:100% 100%; "><!--style="background:url(/project290/images/modules/index/main_content2.jpg); background-size:100% 100%; "  -->
 	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-width:1500px;overflow-x:hidden;background-color:transparent;" >
     	<!-- Left side column. contains the logo and sidebar -->
-        <aside class="left-side sidebar-offcanvas"  style="background:url(/project290/images/modules/index/main_left.jpg)"><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
+        <aside class="left-side sidebar-offcanvas"  style="background-color:transparent;"><!-- style="background:url(/project290/images/modules/index/main_left.jpg)" --> 
         <!-- sidebar: style can be found in sidebar.less --> 
         	<SECTION class="sidebar" style="background-color:transparent;"><%-- style="background:url(../img/left_03.jpg)" --%>
             	<!-- Sidebar user panel -->
@@ -66,17 +66,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<!-- data-show-toggle="true" data-show-columns="true" -->
 									<table data-toggle="table" id="allStadiasInfoTable"
 										style=" text-align:center; background-color:transparent;"
-										class="table-striped table-bordered" id="allStadiasTable"
+										class=" table-bordered" id="allStadiasTable"
 										data-cache="false" data-search="true" data-pagination="true"
 										 data-page-size="20"  data-page-list="[20,30,50,70,ALL]"
 										data-select-item-name="toolbar1" data-show-export="true">
-										<thead>
+										<thead><!-- class="table-striped" -->
 											<tr>
 												<!-- <th data-field="stadiaCode" data-sortable="true" data-align="center">测站编号</th> -->
 											    <th data-field="stadianame"  data-align="center">闸站名称</th><%--data-sortable="true"--%>
 											    <th data-field="meatime"  data-align="center">采集时间</th>
-												<th data-field="heightup" data-align="center">闸前高程 (m)</th>
-												<th data-field="heightdown"  data-align="center">闸后高程 (m)</th>
+												<th data-field="heightup" data-align="center">闸前水位 (m)</th>
+												<th data-field="heightdown"  data-align="center">闸后水位 (m)</th>
+												<th data-field="floodNumber" data-align="center">淹没板数</th>
+												<th data-field="stackNum" data-align="center">护板总数</th>
 												<th data-field="fluxgate"  data-align="center">过闸流量 (m<sup>3</sup>/s)</th>
 												<th data-field="opendegree1"  data-align="center">闸孔(一)开度(m)</th>
 												<th data-field="opendegree2"  data-align="center">闸孔(二)开度(m)</th>
@@ -169,17 +171,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<!-- data-show-toggle="true" data-show-columns="true" -->
 									<table data-toggle="table" 
 										style=" text-align:center;background-color:transparent;"
-										class="table-striped table-bordered" id="WaterReportInfo"
+										class=" table-bordered" id="WaterReportInfo"
 										data-cache="false" data-search="true" data-pagination="true"
 										data-page-size="5"  data-page-list="[5,10,20,50]"
 										data-select-item-name="toolbar1" data-show-export="true">
-										<thead>
+										<thead><!-- class="table-striped" -->
 											<tr>
 												<!-- <th data-field="stadiaCode" data-sortable="true" data-align="center">测站编号</th> -->
 											    <th data-field="stadianame" data-sortable="true" data-align="center">测站名称</th>
 												<th data-field="meatime" data-sortable="true" data-align="center">采集时间</th>
 												<th data-field="heightup" data-sortable="true" data-align="center">闸前水位 (m)</th>
 												<th data-field="heightdown" data-sortable="true" data-align="center">闸后水位 (m)</th>
+												<th data-field="floodNumber" data-align="center">淹没板数</th>
+												<th data-field="stackNum" data-align="center">护板总数</th>
 												<th data-field="fluxgate" data-sortable="true" data-align="center">过闸流量 (m<sup>3</sup>/s)</th>
 												<th data-field="opendegree1" data-sortable="true" data-align="center">闸孔（一）开度(m)</th>
 												<th data-field="opendegree2" data-sortable="true" data-align="center">闸孔（二）开度(m)</th>

@@ -6,10 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.whu.p290.dao.UserMapper">
 	
 	<resultMap id="BaseResultMap" type="com.whu.p290.mapper.param.UserParam">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="id" jdbcType="INTEGER" property="id" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="age" jdbcType="INTEGER" property="age" />
+    </resultMap>
+    <resultMap type="com.whu.p290.mapper.result.UserResult" id="UserResultMap">
+    <result column="user_name" jdbcType="VARCHAR" property="username"/>
+    <result column="password" jdbcType="VARCHAR" property="password"/>	
+    <result column="role" jdbcType="INTEGER" property="role"/>
+    <result column="sex" jdbcType="INTEGER" property="sex"/>
+    <result column="realname" jdbcType="VARCHAR" property="realname"/>
     </resultMap>
 	
     <select id="getUsers"  parameterType="com.whu.p290.mapper.param.UserParam" resultType="com.whu.p290.mapper.result.TestUserResult">
@@ -32,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             </if> -->
     </select>
 	
+	<!-- 
 	<select id="getOtherUsers" parameterType="java.lang.String" resultType="com.whu.p290.mapper.result.SimpleUserResult">
     	    select USERNAME,PASSWORD,REALNAME,y.col_str as ROLETEXT,z.col_str as SEXTEXT  from t_User x left join (select col_str,col_value from t_Constant where col_name = 'role') y on x.role = y.col_value
 			left join (select col_str,col_value from t_Constant where col_name = 'sex') z on x.sex = z.col_value
@@ -39,11 +47,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    <if test= "_parameter != null and _parameter != ''" >
             and x.USERNAME  &lt;&gt; #{_parameter}
             </if>
+    </select>  -->
+    <select id="getOtherUsers" parameterType="java.lang.String" resultMap="UserResultMap">
+    	select * from user_t
+    	where 1=1
+   	   <if test= "username != null and username != ''" >
+            and user_name  &lt;&gt; #{username,jdbcType=VARCHAR}
+       </if>
     </select>
 	
     <insert id="insertUser" parameterType="com.whu.p290.mapper.param.UserParam" useGeneratedKeys="true" keyProperty="id">
         insert into user_t (user_name,password,sex,role,realname)
-        values (#{username},#{password},#{sex},#{role},#{realname,jdbcType=VARCHAR})
+        values (#{username,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{role,jdbcType=VARCHAR},#{realname,jdbcType=VARCHAR})
     </insert>
     <update id="updateUser" parameterType="com.whu.p290.mapper.param.UserParam">
          update user_t 
@@ -64,6 +79,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          where  USER_NAME = #{username}
     </update>
     <delete id="deleteUser" parameterType="java.lang.String">
-        delete t_User where USERNAME=#{_parameter}
+        delete user_t where user_name=#{username}
     </delete>
 </mapper>

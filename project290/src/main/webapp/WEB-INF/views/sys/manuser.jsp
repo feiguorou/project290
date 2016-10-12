@@ -38,7 +38,7 @@ div.fixed-table-body{
 				    <th data-field="state" data-checkbox="true"></th>
 					<th data-field="username" data-sortable="true" data-align="center">用户名</th>
 					<th data-field="realname" data-sortable="true" data-align="center">真实姓名</th>
-					<th data-field="password" data-sortable="true" data-align="center">密码</th>
+					<!-- <th data-field="password" data-sortable="true" data-align="center">密码</th>  -->
 					<th data-field="roletext" data-sortable="true" data-align="center">权限</th>
 					<th data-field="sextext" data-sortable="true" data-align="center">性别</th>
 				</tr>
